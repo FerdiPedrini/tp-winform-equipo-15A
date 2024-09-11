@@ -34,7 +34,6 @@
             this.Codigo = new System.Windows.Forms.Label();
             this.URLimagen = new System.Windows.Forms.Label();
             this.textNombre = new System.Windows.Forms.TextBox();
-            this.textMarca = new System.Windows.Forms.TextBox();
             this.textPrecio = new System.Windows.Forms.TextBox();
             this.textCodigo = new System.Windows.Forms.TextBox();
             this.textURLimagen = new System.Windows.Forms.TextBox();
@@ -42,6 +41,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblCategoria = new System.Windows.Forms.Label();
             this.cbCategoria = new System.Windows.Forms.ComboBox();
+            this.cbMarca = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // Nombre
@@ -96,13 +96,6 @@
             this.textNombre.Name = "textNombre";
             this.textNombre.Size = new System.Drawing.Size(100, 20);
             this.textNombre.TabIndex = 7;
-            // 
-            // textMarca
-            // 
-            this.textMarca.Location = new System.Drawing.Point(89, 87);
-            this.textMarca.Name = "textMarca";
-            this.textMarca.Size = new System.Drawing.Size(100, 20);
-            this.textMarca.TabIndex = 8;
             // 
             // textPrecio
             // 
@@ -163,11 +156,20 @@
             this.cbCategoria.Size = new System.Drawing.Size(121, 21);
             this.cbCategoria.TabIndex = 16;
             // 
+            // cbMarca
+            // 
+            this.cbMarca.FormattingEnabled = true;
+            this.cbMarca.Location = new System.Drawing.Point(89, 87);
+            this.cbMarca.Name = "cbMarca";
+            this.cbMarca.Size = new System.Drawing.Size(121, 21);
+            this.cbMarca.TabIndex = 17;
+            // 
             // FrmAgregarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 337);
+            this.Controls.Add(this.cbMarca);
             this.Controls.Add(this.cbCategoria);
             this.Controls.Add(this.lblCategoria);
             this.Controls.Add(this.btnCancelar);
@@ -175,7 +177,6 @@
             this.Controls.Add(this.textURLimagen);
             this.Controls.Add(this.textCodigo);
             this.Controls.Add(this.textPrecio);
-            this.Controls.Add(this.textMarca);
             this.Controls.Add(this.textNombre);
             this.Controls.Add(this.URLimagen);
             this.Controls.Add(this.Codigo);
@@ -184,6 +185,7 @@
             this.Controls.Add(this.Nombre);
             this.Name = "FrmAgregarProducto";
             this.Text = "AgregarProducto";
+            this.Load += new System.EventHandler(this.FrmAgregarProducto_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,7 +199,6 @@
         private System.Windows.Forms.Label Codigo;
         private System.Windows.Forms.Label URLimagen;
         private System.Windows.Forms.TextBox textNombre;
-        private System.Windows.Forms.TextBox textMarca;
         private System.Windows.Forms.TextBox textPrecio;
         private System.Windows.Forms.TextBox textCodigo;
         private System.Windows.Forms.TextBox textURLimagen;
@@ -205,5 +206,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.ComboBox cbCategoria;
+        private System.Windows.Forms.ComboBox cbMarca;
     }
 }

@@ -40,7 +40,7 @@ namespace Mercado
             Articulo articulo = new Articulo();
             Marca marca = new Marca
             {
-                Descripcion = textMarca.Text
+                Descripcion = cbMarca.Text
             };
 
             articulo.nombre = textNombre.Text;
@@ -73,6 +73,21 @@ namespace Mercado
         private void textCodigo_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void FrmAgregarProducto_Load(object sender, EventArgs e)
+        {
+            CategoriaService categoria = new CategoriaService();
+
+            try
+            {
+                cbCategoria.DataSource = categoria.listar();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
