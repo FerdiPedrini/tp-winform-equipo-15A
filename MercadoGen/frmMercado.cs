@@ -29,6 +29,7 @@ namespace Mercado
                 ArticuloService articulo = new ArticuloService();
                 listaArticulos = articulo.listar();
                 dgvListaProd.DataSource = listaArticulos;
+                dgvListaProd.Columns["URLimagen"].Visible = false;
                 cargarImagen(listaArticulos[0].URLimagen);
          
            

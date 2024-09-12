@@ -12,6 +12,7 @@ namespace Dominio
     {
         public string codigoArticulo { get; set; }
         public string nombre { get; set; }
+        public string descripcion { get; set; } 
         public Marca marca { get; set; } //(seleccionable de una lista desplegable).
         public Categoria categoria { get; set; } //(seleccionable de una lista desplegable.
         public float precio { get; set; }

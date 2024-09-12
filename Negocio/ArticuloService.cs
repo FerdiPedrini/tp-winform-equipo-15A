@@ -16,50 +16,48 @@ namespace Negocio
     {
         public List<Articulo> listar()
         {
+            AccesoDatos _accesoDatos = new AccesoDatos();
+            
             List<Articulo> lista = new List<Articulo>();
-            SqlConnection conexion = new SqlConnection();
-            SqlCommand comando = new SqlCommand();
-            SqlDataReader lector;
 
             try
             {
-                conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true";
-                comando.Connection = conexion;
-                comando.CommandType = System.Data.CommandType.Text;
 
-                // Consulta combinada para ARTICULOS, MARCAS, CATEGORIAS e IMAGENES
-                comando.CommandText = @"SELECT A.Codigo, A.Nombre, A.Precio, M.Descripcion AS Marca, C.Descripcion AS Categoria, I.ImagenUrl
-                    FROM ARTICULOS A
-                    LEFT JOIN MARCAS M ON A.Id = M.Id
-                    LEFT JOIN CATEGORIAS C ON A.Id = C.Id
-                    LEFT JOIN IMAGENES I ON A.Id = I.Id";
+                _accesoDatos.setearConsulta("SELECT Codigo,Nombre, A.Descripcion,Precio, M.Descripcion Marca,C.Descripcion Categoria, I.ImagenUrl From ARTICULOS A, MARCAS M, CATEGORIAS C,IMAGENES I Where M.Id = A.IdMarca And C.Id = A.IdCategoria");
+                _accesoDatos.ejecutarLectura();
 
-
-                conexion.Open();
-                lector = comando.ExecuteReader();
-
-                while (lector.Read())
+                while (_accesoDatos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
-                    aux.codigoArticulo = Convert.ToString(lector["Codigo"]);
-                    aux.nombre = Convert.ToString(lector["Nombre"]);
-                    //aux.precio = Convert.ToDecimal(lector["Precio"]);
-                    aux.precio = Convert.ToSingle(lector["Precio"]);
+                    
+                    aux.codigoArticulo = (string)_accesoDatos.Lector["Codigo"];
+                    aux.nombre = (string)_accesoDatos.Lector["Nombre"];
+                    aux.descripcion = (string)_accesoDatos.Lector["Descripcion"];
+                    aux.precio = Convert.ToSingle(_accesoDatos.Lector["Precio"]);
+                    
                     aux.marca = new Marca();
-                    aux.marca.Descripcion = Convert.ToString(lector["Marca"]);
+                    aux.marca.Descripcion = (string)_accesoDatos.Lector["Marca"];
+                    
                     aux.categoria = new Categoria();
-                    aux.categoria.Descripcion = Convert.ToString(lector["Categoria"]);
-                    aux.URLimagen = Convert.ToString(lector["ImagenUrl"]);
+                    aux.categoria.Descripcion = (string)_accesoDatos.Lector["Categoria"];
+                 
+                    aux.URLimagen = (string)_accesoDatos.Lector["ImagenUrl"];
+
                     lista.Add(aux);
                 }
-                lector.Close();
-                conexion.Close();
+
+
                 return lista;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+            finally
+            {
+                _accesoDatos.cerrarConexion();
+            }
+        
         }
 
         public void agregarProducto(Articulo _articulo)

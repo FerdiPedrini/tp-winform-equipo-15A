@@ -52,7 +52,7 @@
             this.Nombre.Size = new System.Drawing.Size(44, 13);
             this.Nombre.TabIndex = 0;
             this.Nombre.Text = "Nombre";
-            this.Nombre.Click += new System.EventHandler(this.label1_Click);
+           
             // 
             // Marca
             // 
