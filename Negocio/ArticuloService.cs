@@ -66,7 +66,7 @@ namespace Negocio
 
             try
             {
-                _accesoDatos.setearConsulta("INSERT INTO ARTICULOS (Codigo,Nombre,Precio) VALUES ('" + _articulo.codigoArticulo + "','" + _articulo.nombre + "'," + _articulo.precio + ")");
+                _accesoDatos.setearConsulta("INSERT INTO ARTICULOS (Codigo,Nombre,Precio,Descripcion) VALUES ('" + _articulo.codigoArticulo + "','" + _articulo.nombre + "','" + _articulo.descripcion + "'," + _articulo.precio + ")");
 
                 _accesoDatos.ejecutarAccion();
 
