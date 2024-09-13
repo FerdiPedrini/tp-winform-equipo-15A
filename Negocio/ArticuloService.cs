@@ -103,7 +103,13 @@ namespace Negocio
 
                     articulo.Precio = (decimal)accesoDatos.Lector["Precio"];
 
-
+                    /*
+                    if(!(accesoDatos.Lector.IsDBNull(accesoDatos.GetOrdinal("URLImagen"))));
+                            articulo.UrlImagen = (string)accesoDatos.Lector["UrlImagen"];
+                            //--------------//
+                            if(!(accesoDatos.Lector["UrlImagen"] is DBNull))
+                            articulo.UrlImagen=(string)accesoDatos.Lector["UrlImagen"];
+                    **/
                     // si no tiene imagenes, no se cargan en el objeto
 
 
