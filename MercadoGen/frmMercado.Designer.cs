@@ -31,7 +31,7 @@
             this.dgvListaProd = new System.Windows.Forms.DataGridView();
             this.pbxArt = new System.Windows.Forms.PictureBox();
             this.agregarProducto = new System.Windows.Forms.Button();
-            this.btnEminarFisico = new System.Windows.Forms.Button();
+            this.btnEliminarFisico = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArt)).BeginInit();
             this.SuspendLayout();
@@ -65,22 +65,22 @@
             this.agregarProducto.UseVisualStyleBackColor = true;
             this.agregarProducto.Click += new System.EventHandler(this.agregarProducto_Click);
             // 
-            // btnEminarFisico
+            // btnEliminarFisico
             // 
-            this.btnEminarFisico.Location = new System.Drawing.Point(391, 355);
-            this.btnEminarFisico.Name = "btnEminarFisico";
-            this.btnEminarFisico.Size = new System.Drawing.Size(154, 23);
-            this.btnEminarFisico.TabIndex = 3;
-            this.btnEminarFisico.Text = "button1";
-            this.btnEminarFisico.UseVisualStyleBackColor = true;
-            this.btnEminarFisico.Click += new System.EventHandler(this.button1_Click);
+            this.btnEliminarFisico.Location = new System.Drawing.Point(391, 355);
+            this.btnEliminarFisico.Name = "btnEliminarFisico";
+            this.btnEliminarFisico.Size = new System.Drawing.Size(154, 23);
+            this.btnEliminarFisico.TabIndex = 3;
+            this.btnEliminarFisico.Text = "Eliminar";
+            this.btnEliminarFisico.UseVisualStyleBackColor = true;
+            this.btnEliminarFisico.Click += new System.EventHandler(this.button1_Click);
             // 
             // Mercado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(902, 410);
-            this.Controls.Add(this.btnEminarFisico);
+            this.Controls.Add(this.btnEliminarFisico);
             this.Controls.Add(this.agregarProducto);
             this.Controls.Add(this.pbxArt);
             this.Controls.Add(this.dgvListaProd);
@@ -100,7 +100,7 @@
         private System.Windows.Forms.DataGridView dgvListaProd;
         private System.Windows.Forms.PictureBox pbxArt;
         private System.Windows.Forms.Button agregarProducto;
-        private System.Windows.Forms.Button btnEminarFisico;
+        private System.Windows.Forms.Button btnEliminarFisico;
     }
 }
 

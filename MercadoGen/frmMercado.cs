@@ -80,6 +80,20 @@ namespace Mercado
         private void button1_Click(object sender, EventArgs e)
         {
 
+            ArticuloService service = new ArticuloService();
+            Articulo seleccionado;
+            try
+            {
+                seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem;
+                service.eliminar(seleccionado.Id);
+                cargaDataGrip();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+
         }
 
         private void dgvListaProd_CellContentClick(object sender, DataGridViewCellEventArgs e)

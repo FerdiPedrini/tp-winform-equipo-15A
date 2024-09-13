@@ -161,21 +161,22 @@ namespace Negocio
             }
             
         }
-
         public void eliminar(int id)
         {
             AccesoDatos _accesoDatos = new AccesoDatos();
             try
             {
-                
-                _accesoDatos.setearConsulta("delete from pokemons where id = @id");
+
+                _accesoDatos.setearConsulta("delete from Articulos where id = @id");
+                _accesoDatos.setearParametro("@id", id);
+                _accesoDatos.ejecutarAccion();
 
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            finally 
+            finally
             {
                 _accesoDatos.cerrarConexion();
             }
