@@ -65,7 +65,8 @@ namespace Negocio
             }
         }
         public void setearParametro(string nombre, object valor)
-        {
+        {   
+            //nombre: de la columna y el objeto que quiero modificar
             comando.Parameters.AddWithValue(nombre, valor);
         }
         public void eliminar(int id)
