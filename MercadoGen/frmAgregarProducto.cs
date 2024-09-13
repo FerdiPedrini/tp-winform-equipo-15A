@@ -35,14 +35,14 @@ namespace Mercado
             //}
             try
             {
-             articulo.codigoArticulo=textCodigo.Text;
-            articulo.nombre = textNombre.Text;
-            articulo.descripcion = txtDescripcion.Text;
-            articulo.precio = Convert.ToDecimal(textPrecio.Text);
+             articulo.CodigoArticulo=textCodigo.Text;
+            articulo.Nombre = textNombre.Text;
+            articulo.Descripcion = txtDescripcion.Text;
+            articulo.Precio = Convert.ToDecimal(textPrecio.Text);
 
-            articulo.marca = (Marca)cbMarca.SelectedItem;        
-            articulo.categoria = (Categoria)cbCategoria.SelectedItem;
-            articulo.URLimagen = textURLimagen.Text;
+            articulo.Marca = (Marca)cbMarca.SelectedItem;        
+            articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
+            //articulo.Url = textURLimagen.Text;
             }
             catch (Exception ex)
             {

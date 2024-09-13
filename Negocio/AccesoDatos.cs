@@ -24,7 +24,7 @@ namespace Negocio
         }
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=localhost; database=CATALOGO_P3_DB; integrated security=true");
+            conexion = new SqlConnection("server = localhost\\SQLEXPRESS; database = CATALOGO_P3_DB; integrated security = true");
             comando = new SqlCommand();
 
 
@@ -82,14 +82,15 @@ namespace Negocio
                 throw ex;
             }
 
-            /*public void cerrarConexion()
-            {
-                if (lector != null)
-                    lector.Close();
-                    conexion.Close();
+          
+       
+        }
+        public void cerrarConexion()
+        {
+            if (lector != null)
+                lector.Close();
+            conexion.Close();
 
-            }
-       */
         }
     }
 }

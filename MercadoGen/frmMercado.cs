@@ -25,20 +25,26 @@ namespace Mercado
 
         private void MercadoGen_Load(object sender, EventArgs e)
         {
-           
-                ArticuloService articulo = new ArticuloService();
-                listaArticulos = articulo.listar();
-                dgvListaProd.DataSource = listaArticulos;
-                dgvListaProd.Columns["URLimagen"].Visible = false;
-                cargarImagen(listaArticulos[0].URLimagen);
+
+            cargaDataGrip();
+            
+
          
            
         }
+        public void cargaDataGrip()
+        {
+            ArticuloService articulo = new ArticuloService();
+            listaArticulos = articulo.listar();
+            dgvListaProd.DataSource = listaArticulos;
+            //dgvListaProd.Columns["URLimagen"].Visible = false;
+            //cargarImagen(listaArticulos[0].URLimagen);
 
+        }
         private void dgvListaProd_SelectionChanged(object sender, EventArgs e)
         {
            Articulo seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem; //DAME EL OBJ ENLAZADO //DEVUELVE UN OBJ 
-           cargarImagen(seleccionado.URLimagen);
+           //cargarImagen(seleccionado.URLimagen);
 
         }
         private void cargarImagen (string imagen)
@@ -68,6 +74,7 @@ namespace Mercado
             {
                 dgvListaProd.TabIndex--;
             }
+            cargaDataGrip();
         }
 
         private void button1_Click(object sender, EventArgs e)
