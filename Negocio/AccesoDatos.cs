@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 
 
+
 namespace Negocio
 {
     internal class AccesoDatos
@@ -18,29 +19,29 @@ namespace Negocio
         { get
             {
                 return lector;
-            } 
-            
+            }
+
         }
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
+            conexion = new SqlConnection("server=localhost; database=CATALOGO_P3_DB; integrated security=true");
             comando = new SqlCommand();
-            
-            
+
+
         }
         public void setearConsulta(string consulta)
         {
-            comando.CommandType= System.Data.CommandType.Text;
+            comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consulta;
         }
 
         public void ejecutarLectura()
         {
-            comando.Connection=conexion;
+            comando.Connection = conexion;
             try
             {
                 conexion.Open();
-                lector=comando.ExecuteReader();
+                lector = comando.ExecuteReader();
             }
             catch (Exception ex)
             {
@@ -63,13 +64,32 @@ namespace Negocio
                 throw ex;
             }
         }
-        public void cerrarConexion()
+        public void setearParametro(string nombre, object valor)
         {
-            if (lector != null)
-                lector.Close();
-                conexion.Close();
-
+            comando.Parameters.AddWithValue(nombre, valor);
         }
-   
+        public void eliminar(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.setearConsulta("delete from pokemons where id = @id");
+                datos.setearParametro("@id", id);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            /*public void cerrarConexion()
+            {
+                if (lector != null)
+                    lector.Close();
+                    conexion.Close();
+
+            }
+       */
+        }
     }
 }

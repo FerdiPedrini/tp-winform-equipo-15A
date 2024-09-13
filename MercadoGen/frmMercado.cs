@@ -59,6 +59,25 @@ namespace Mercado
         {
             FrmAgregarProducto alta = new FrmAgregarProducto();
             alta.ShowDialog();
+            int index = dgvListaProd.TabIndex;
+            if(index == 0)
+            {
+                dgvListaProd.TabIndex++;
+            }
+            else
+            {
+                dgvListaProd.TabIndex--;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvListaProd_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

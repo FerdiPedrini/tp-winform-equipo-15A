@@ -28,16 +28,26 @@ namespace Mercado
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Articulo articulo = new Articulo();
-            Marca marca = new Marca
+            
+            //Categoria categoria = new Categoria();
+            //{
+            //Descripcion = cbCategoria.Text;
+            //}
+            try
             {
-                Descripcion = cbMarca.Text
-            };
-
+             articulo.codigoArticulo=textCodigo.Text;
             articulo.nombre = textNombre.Text;
-            articulo.marca = marca;
-            articulo.precio = float.Parse(textPrecio.Text);
-            articulo.codigoArticulo=textCodigo.Text;
+            articulo.descripcion = txtDescripcion.Text;
+            articulo.precio = Convert.ToDecimal(textPrecio.Text);
+
+            articulo.marca = (Marca)cbMarca.SelectedItem;        
+            articulo.categoria = (Categoria)cbCategoria.SelectedItem;
             articulo.URLimagen = textURLimagen.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 
             try
             {
@@ -68,16 +78,20 @@ namespace Mercado
         private void FrmAgregarProducto_Load(object sender, EventArgs e)
         {
             CategoriaService categoria = new CategoriaService();
-
+            MarcaService marca = new MarcaService();
             try
             {
                 cbCategoria.DataSource = categoria.listar();
+                cbMarca.DataSource = marca.listar();
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.ToString());
             }
+          
+
+            
         }
     }
 }
