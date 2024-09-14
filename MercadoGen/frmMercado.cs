@@ -37,7 +37,7 @@ namespace Mercado
             ArticuloService articulo = new ArticuloService();
             listaArticulos = articulo.listar();
             dgvListaProd.DataSource = listaArticulos;
-            //dgvListaProd.Columns["URLimagen"].Visible = false;
+            dgvListaProd.Columns["Id"].Visible = false;
             //cargarImagen(listaArticulos[0].URLimagen);
 
         }
@@ -45,6 +45,7 @@ namespace Mercado
         {
            Articulo seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem; //DAME EL OBJ ENLAZADO //DEVUELVE UN OBJ 
            //cargarImagen(seleccionado.URLimagen);
+
 
         }
         private void cargarImagen (string imagen)
@@ -99,6 +100,16 @@ namespace Mercado
         private void dgvListaProd_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem;
+
+            FrmAgregarProducto modificar = new FrmAgregarProducto(seleccionado);
+            modificar.ShowDialog();
+            cargaDataGrip();
         }
     }
 }

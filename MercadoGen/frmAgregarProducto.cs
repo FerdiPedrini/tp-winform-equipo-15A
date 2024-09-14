@@ -15,11 +15,18 @@ namespace Mercado
 {
     public partial class FrmAgregarProducto : Form
     {
+        private Articulo articulo = null;
         public FrmAgregarProducto()
         {
             InitializeComponent();
         }
 
+        public FrmAgregarProducto(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
+            Text = "Modificar Articulo"; 
+        }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -27,47 +34,41 @@ namespace Mercado
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Articulo articulo = new Articulo();
-            
-            //Categoria categoria = new Categoria();
-            //{
-            //Descripcion = cbCategoria.Text;
-            //}
+
+            ArticuloService ArticuloNuevo = new ArticuloService();
+
             try
             {
-             articulo.CodigoArticulo=textCodigo.Text;
+                if (articulo == null)
+                articulo = new Articulo();
+
+            articulo.CodigoArticulo=textCodigo.Text;
             articulo.Nombre = textNombre.Text;
             articulo.Descripcion = txtDescripcion.Text;
             articulo.Precio = Convert.ToDecimal(textPrecio.Text);
-
             articulo.Marca = (Marca)cbMarca.SelectedItem;        
             articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
-            //articulo.Url = textURLimagen.Text;
+                //articulo.Url = textURLimagen.Text;
+
+                if (articulo.Id != 0)
+                {
+                    ArticuloNuevo.modificar(articulo);
+                    MessageBox.Show("PRODUCTO MODIFICADO CON EXITO");
+                }
+
+                else
+                {
+                    ArticuloNuevo.agregarProducto(articulo);
+                    MessageBox.Show("PRODUCTO AGREGADO CON EXITO");
+                }
+               
+                Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
-            try
-            {
-                ArticuloService ArticuloNuevo = new ArticuloService();
-                
-                ArticuloNuevo.agregarProducto(articulo);
-                
-                MessageBox.Show("PRODUCTO AGREGADA CON EXITO");
-
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.ToString());
-            }
-
-            
-            
-
-            
+ 
         }
 
         private void textCodigo_TextChanged(object sender, EventArgs e)
@@ -82,7 +83,26 @@ namespace Mercado
             try
             {
                 cbCategoria.DataSource = categoria.listar();
+                cbCategoria.ValueMember = "Id";
+                cbCategoria.DisplayMember = "Descripcion";
                 cbMarca.DataSource = marca.listar();
+                cbMarca.ValueMember = "Id";
+                cbMarca.DisplayMember = "Descripcion";
+               
+
+                if (articulo != null)
+                {
+                    textCodigo.Text = articulo.CodigoArticulo;
+                    textNombre.Text = articulo.Nombre;
+                    txtDescripcion.Text = articulo.Descripcion;
+                    textPrecio.Text = articulo.Precio.ToString();
+                    cbMarca.Text = articulo.Marca.ToString();
+                    cbCategoria.Text = articulo.Categoria.ToString();
+                    //hacer imagen dsp
+                    cbCategoria.SelectedValue = articulo.Categoria.Id;
+                    cbMarca.SelectedValue = articulo.Marca.Id;
+
+                }
             }
             catch (Exception ex)
             {

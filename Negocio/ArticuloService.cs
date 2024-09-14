@@ -15,53 +15,34 @@ namespace Negocio
 {
     public class ArticuloService
     {
-        /*  public List<Articulo> listar()
-          {
-              AccesoDatos _accesoDatos = new AccesoDatos();
+        
 
-              List<Articulo> lista = new List<Articulo>();
-
-              try
-              {
-
-                  _accesoDatos.setearConsulta("SELECT Codigo,Nombre, A.Descripcion,Precio, M.Descripcion Marca,C.Descripcion Categoria, I.ImagenUrl From ARTICULOS A, MARCAS M, CATEGORIAS C,IMAGENES I Where M.Id = A.IdMarca And C.Id = A.IdCategoria");
-                  // _accesoDatos.setearConsulta("SELECT Codigo,Nombre, A.Descripcion,Precio, M.Descripcion Marca,C.Descripcion Categoria, I.ImagenUrl From ARTICULOS A, MARCAS M, CATEGORIAS C,IMAGENES I Where M.Id = A.IdMarca And C.Id = A.IdCategoria");
-                  _accesoDatos.ejecutarLectura();
-
-                  while (_accesoDatos.Lector.Read())
-                  {
-                      Articulo aux = new Articulo();
-
-                      aux.codigoArticulo = (string)_accesoDatos.Lector["Codigo"];
-                      aux.nombre = (string)_accesoDatos.Lector["Nombre"];
-                      aux.descripcion = (string)_accesoDatos.Lector["Descripcion"];
-                      aux.precio = Convert.ToDecimal( _accesoDatos.Lector["Precio"]);
-
-                      aux.marca = new Marca();
-                      aux.marca.Descripcion = (string)_accesoDatos.Lector["Marca"];
-
-                      aux.categoria = new Categoria();
-                      aux.categoria.Descripcion = (string)_accesoDatos.Lector["Categoria"];
-
-                      aux.URLimagen = (string)_accesoDatos.Lector["ImagenUrl"];
-
-                      lista.Add(aux);
-                  }
+        public void modificar(Articulo articulo)
+        {
+            AccesoDatos _accesoDatos = new AccesoDatos();
+            try
+            {
+                _accesoDatos.setearConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @desc, IdMarca = @idMarca, IdCategoria = @idCategoria, Precio = @precio WHERE Id = @id");
 
 
-                  return lista;
-              }
-              catch (Exception ex)
-              {
-                  throw ex;
-              }
-              finally
-              {
-                  //_accesoDatos.cerrarConexion();
-              }
+                _accesoDatos.setearParametro("@codigo", articulo.CodigoArticulo);
+                _accesoDatos.setearParametro("@nombre", articulo.Nombre);
+                _accesoDatos.setearParametro("@desc", articulo.Descripcion);
+                //_accesoDatos.setearParametro("@img"//, articulo.UrlImagen);
+                _accesoDatos.setearParametro("@idCategoria", articulo.Categoria.Id);
+                _accesoDatos.setearParametro("@precio", articulo.Precio);
+                _accesoDatos.setearParametro("@idMarca", articulo.Marca.Id);
+                _accesoDatos.setearParametro("@id", articulo.Id);
 
-          }
-        */
+                _accesoDatos.ejecutarAccion();
+            }
+
+            catch(Exception ex) { throw ex;  }
+            finally
+            {
+                _accesoDatos.cerrarConexion();
+            }
+        }
 
         public List<Articulo> listar()
         {
@@ -71,8 +52,8 @@ namespace Negocio
 
             try
             {
-                //_accesoDatos.setearConsulta("SELECT Codigo,Nombre, A.Descripcion,Precio, M.Descripcion Marca,C.Descripcion Categoria, I.ImagenUrl From ARTICULOS A, MARCAS M, CATEGORIAS C,IMAGENES I Where M.Id = A.IdMarca And C.Id = A.IdCategoria");
-                accesoDatos.setearConsulta("SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Nombre_Marca, "
+               
+                accesoDatos.setearConsulta("SELECT A.Id, Codigo, Nombre, A.Descripcion, A.IdMarca, A.IdCategoria, M.Descripcion Nombre_Marca, "
                     + "C.Descripcion Nombre_Categoria, M.Id Id_Marca, C.Id Id_Categoria, A.Precio, I.ImagenUrl UrlImagen FROM ARTICULOS A JOIN CATEGORIAS C " +
                     "ON A.IdCategoria = C.Id JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON I.IdArticulo = A.Id ORDER BY A.Id ASC");
 
@@ -86,6 +67,7 @@ namespace Negocio
 
                     Articulo articulo = new Articulo();
                     articulo.Id = (int)accesoDatos.Lector["Id"];
+
                     articulo.CodigoArticulo = (string)accesoDatos.Lector["Codigo"];
                     articulo.Nombre = (string)accesoDatos.Lector["Nombre"];
                     articulo.Descripcion = (string)accesoDatos.Lector["Descripcion"];
@@ -93,13 +75,13 @@ namespace Negocio
                     //Creacion de Marca y relacion en datagrid
                     articulo.Marca = new Marca();
                     articulo.Marca.Descripcion = (string)accesoDatos.Lector["Nombre_Marca"];
-
+                    articulo.Marca.Id = (int)accesoDatos.Lector["IdMarca"];
 
 
                     //Creacion de Categoria y relacion en datagrid
                     articulo.Categoria = new Categoria();
                     articulo.Categoria.Descripcion = (string)accesoDatos.Lector["Nombre_Categoria"];
-
+                    articulo.Categoria.Id = (int)accesoDatos.Lector["IdCategoria"];
 
                     articulo.Precio = (decimal)accesoDatos.Lector["Precio"];
 
