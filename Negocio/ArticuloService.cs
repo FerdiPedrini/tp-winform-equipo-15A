@@ -85,15 +85,16 @@ namespace Negocio
 
                     articulo.Precio = (decimal)accesoDatos.Lector["Precio"];
 
-                    /*
-                    if(!(accesoDatos.Lector.IsDBNull(accesoDatos.GetOrdinal("URLImagen"))));
-                            articulo.UrlImagen = (string)accesoDatos.Lector["UrlImagen"];
-                            //--------------//
-                            if(!(accesoDatos.Lector["UrlImagen"] is DBNull))
-                            articulo.UrlImagen=(string)accesoDatos.Lector["UrlImagen"];
-                    **/
-                    // si no tiene imagenes, no se cargan en el objeto
-
+                    
+                    articulo.listaImagenes = new List<Imagen>();
+                    
+                    if (!(accesoDatos.Lector["UrlImagen"] is DBNull))
+                    {
+                        Imagen imagen = new Imagen();
+                        imagen.UrlImagen = (string)accesoDatos.Lector["UrlImagen"];
+                        articulo.listaImagenes.Add(imagen);
+                    }
+   
 
                     lista.Add(articulo);
                 }
@@ -107,7 +108,7 @@ namespace Negocio
             }
             finally
             {
-                //accesoDatos.cerrarConexion();
+                accesoDatos.cerrarConexion();
             }
         }
         public void agregarProducto(Articulo _articulo)
@@ -116,7 +117,6 @@ namespace Negocio
 
             try
             {
-                // _accesoDatos.setearConsulta("INSERT INTO ARTICULOS (Codigo,Nombre,Precio,Descripcion, IdMarca,IdCategoria) VALUES ('" + _articulo.codigoArticulo + "','" + _articulo.nombre + "','" + _articulo.precio + "','" + _articulo.descripcion + "'" + _articulo.marca.Id + ","+ _articulo.categoria.Id + ")");
                 _accesoDatos.setearConsulta("INSERT INTO ARTICULOS(Codigo, Nombre, Precio, Descripcion, IdMarca, IdCategoria) VALUES(@codigo,@nombre,@precio,@descripcion,@IdMarca,@IdCategoria)");
                 _accesoDatos.setearParametro("@codigo", _articulo.CodigoArticulo);
                 _accesoDatos.setearParametro("@nombre", _articulo.Nombre);

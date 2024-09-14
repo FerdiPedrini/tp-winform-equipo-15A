@@ -15,16 +15,18 @@ namespace Mercado
 {
     public partial class FrmAgregarProducto : Form
     {
-        private Articulo articulo = null;
+        private Articulo articulo { get; set; } = new Articulo();
+        private bool modificar = false;
         public FrmAgregarProducto()
         {
             InitializeComponent();
         }
 
-        public FrmAgregarProducto(Articulo articulo)
+        public FrmAgregarProducto(Articulo articulo, bool modificar)
         {
             InitializeComponent();
             this.articulo = articulo;
+            this.modificar = modificar; 
             Text = "Modificar Articulo"; 
         }
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -48,7 +50,7 @@ namespace Mercado
             articulo.Precio = Convert.ToDecimal(textPrecio.Text);
             articulo.Marca = (Marca)cbMarca.SelectedItem;        
             articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
-                //articulo.Url = textURLimagen.Text;
+              
 
                 if (articulo.Id != 0)
                 {
@@ -90,19 +92,23 @@ namespace Mercado
                 cbMarca.DisplayMember = "Descripcion";
                
 
-                if (articulo != null)
+               
+               
+               if(modificar)
+               
                 {
+
                     textCodigo.Text = articulo.CodigoArticulo;
                     textNombre.Text = articulo.Nombre;
                     txtDescripcion.Text = articulo.Descripcion;
                     textPrecio.Text = articulo.Precio.ToString();
                     cbMarca.Text = articulo.Marca.ToString();
                     cbCategoria.Text = articulo.Categoria.ToString();
-                    //hacer imagen dsp
+        
                     cbCategoria.SelectedValue = articulo.Categoria.Id;
                     cbMarca.SelectedValue = articulo.Marca.Id;
-
                 }
+                
             }
             catch (Exception ex)
             {
@@ -112,6 +118,16 @@ namespace Mercado
           
 
             
+        }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            frmAgregarImagen alta = new frmAgregarImagen();
+
+            alta.ShowDialog();
+           
+            articulo.listaImagenes = alta.ListaUrl.ToList() ;
+
         }
     }
 }

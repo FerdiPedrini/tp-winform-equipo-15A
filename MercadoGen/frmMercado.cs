@@ -26,8 +26,7 @@ namespace Mercado
         private void MercadoGen_Load(object sender, EventArgs e)
         {
 
-            cargaDataGrip();
-            
+            cargaDataGrip();            
 
          
            
@@ -35,10 +34,12 @@ namespace Mercado
         public void cargaDataGrip()
         {
             ArticuloService articulo = new ArticuloService();
+            
             listaArticulos = articulo.listar();
             dgvListaProd.DataSource = listaArticulos;
             dgvListaProd.Columns["Id"].Visible = false;
-            //cargarImagen(listaArticulos[0].URLimagen);
+            cargarImagen(listaArticulos[0].listaImagenes);
+
 
         }
         private void dgvListaProd_SelectionChanged(object sender, EventArgs e)
@@ -48,11 +49,12 @@ namespace Mercado
 
 
         }
-        private void cargarImagen (string imagen)
+        private void cargarImagen ( List<Imagen> ListaImagenes )
         {
             try
             {
-                pbxArt.Load(imagen);
+                //forEach//
+                pbxArt.Load(ListaImagenes[0].UrlImagen);
 
             }
             catch(Exception ex) {
@@ -104,11 +106,13 @@ namespace Mercado
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            bool modificar = true;
+
             Articulo seleccionado;
             seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem;
 
-            FrmAgregarProducto modificar = new FrmAgregarProducto(seleccionado);
-            modificar.ShowDialog();
+            FrmAgregarProducto frmmodificar = new FrmAgregarProducto(seleccionado,modificar);
+            frmmodificar.ShowDialog();
             cargaDataGrip();
         }
     }
