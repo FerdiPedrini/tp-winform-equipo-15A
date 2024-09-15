@@ -15,71 +15,119 @@ namespace Mercado
 {
     public partial class frmAgregarImagen : Form
     {
-        public List <Imagen> ListaUrl { get;} = new List <Imagen> ();
+        public List<Imagen> ListaIMG { get; }=new List<Imagen>();
+        
+        public bool Resultado { get; set; } = false;
+
 
         public frmAgregarImagen()
         {
             InitializeComponent();
-        }
-
-        private void btnAgregarURL_Click(object sender, EventArgs e)
-        {
-            Imagen imagen = new Imagen();
-
-            imagen.UrlImagen = txtUrlImagen.Text;
-            
-            
-
-            ListaUrl.Add(imagen);
-
-            txtUrlImagen.Clear();
-
-            if (dgvListaImagenes.DataSource != null)
-                dgvListaImagenes.DataSource = null;
-            
-            dgvListaImagenes.DataSource = ListaUrl;
-
             
         }
-        /*
-        public void cargaDataGrip()
+        public frmAgregarImagen(List<Imagen>listaImagenes)
         {
-            ArticuloService articulo = new ArticuloService();
-
-            listaArticulos = articulo.listar();
-            dgvListaProd.DataSource = listaArticulos;
-            dgvListaProd.Columns["Id"].Visible = false;
-            cargarImagen(listaArticulos[0].listaImagenes);
-
-
+            if (listaImagenes.Count == 0)
+            {
+                InitializeComponent();
+                return;
+            }
+            
+            ListaIMG = listaImagenes;
+            InitializeComponent();
+             dgvListaImagenes.DataSource = ListaIMG;
+            
+            this.ocultarColumnas();
         }
-        private void dgvListaProd_SelectionChanged(object sender, EventArgs e)
-        {
-            Articulo seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem; //DAME EL OBJ ENLAZADO //DEVUELVE UN OBJ 
-                                                                                     //cargarImagen(seleccionado.URLimagen);
 
-
-        }
-        private void cargarImagen(List<Imagen> ListaImagenes)
+        private void btnCargarIMG_Click(object sender, EventArgs e)
         {
+
             try
             {
-                //forEach//
-                pbxArt.Load(ListaImagenes[0].UrlImagen);
+                Imagen linkImagen = new Imagen();
+                 linkImagen.UrlImagen= txtUrlImagen.Text;
+
+                if (linkImagen.UrlImagen.Trim() == "")
+                {
+                    txtUrlImagen.Clear();
+                    return;
+                }
+
+                ListaIMG.Add(linkImagen);
+                txtUrlImagen.Clear();
+                
+                if (dgvListaImagenes.DataSource != null)
+                    dgvListaImagenes.DataSource = null;
+
+                dgvListaImagenes.DataSource = ListaIMG;
+                
+                this.ocultarColumnas();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+    
+             
+        }
+
+
+        private void cargarImagen(string Urlimagen)
+        {
+            try
+
+            {
+                pbxListaImagenes.Load(Urlimagen);
 
             }
             catch (Exception ex)
             {
 
-                pbxArt.Load("https://img.freepik.com/free-vector/funny-error-404-background-design_1167-219.jpg?t=st=1725827418~exp=1725831018~hmac=54590de3abb1e78d752a2b192ee5f3553e873955a510b935d7dd33c8d56a8a18&w=740");
+                pbxListaImagenes.Load("https://img.freepik.com/free-vector/funny-error-404-background-design_1167-219.jpg?t=st=1725827418~exp=1725831018~hmac=54590de3abb1e78d752a2b192ee5f3553e873955a510b935d7dd33c8d56a8a18&w=740");
 
             }
         }
-        */
-
-        private void dgvListaImagenes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void ocultarColumnas ()
         {
+            dgvListaImagenes.Columns["id"].Visible = false;
+            dgvListaImagenes.Columns["idArticulo"].Visible = false;
+        }
 
+        private void dgvListaImagenes_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvListaImagenes.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            try
+            {
+                Imagen seleccionada = (Imagen)dgvListaImagenes.CurrentRow.DataBoundItem;
+                //DAME EL OBJ ENLAZADO //DEVUELVE UN OBJ 
+                cargarImagen(seleccionada.UrlImagen);
+
+            }
+            catch (Exception)
+            {
+
+                cargarImagen("https://img.freepik.com/free-vector/funny-error-404-background-design_1167-219.jpg?t=st=1725827418~exp=1725831018~hmac=54590de3abb1e78d752a2b192ee5f3553e873955a510b935d7dd33c8d56a8a18&w=740");
+            }       
+
+        }
+        
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Resultado = false;
+            this.Close();
+        }
+
+        private void btnAgrImgAceptar_Click(object sender, EventArgs e)
+        {
+            Resultado = true;
+            this.Close();
         }
     }
 }

@@ -17,6 +17,7 @@ namespace Mercado
     {
         private Articulo articulo { get; set; } = new Articulo();
         private bool modificar = false;
+
         public FrmAgregarProducto()
         {
             InitializeComponent();
@@ -50,6 +51,7 @@ namespace Mercado
             articulo.Precio = Convert.ToDecimal(textPrecio.Text);
             articulo.Marca = (Marca)cbMarca.SelectedItem;        
             articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
+            
               
 
                 if (articulo.Id != 0)
@@ -70,6 +72,7 @@ namespace Mercado
             {
                 MessageBox.Show(ex.ToString());
             }
+            
  
         }
 
@@ -104,7 +107,6 @@ namespace Mercado
                     textPrecio.Text = articulo.Precio.ToString();
                     cbMarca.Text = articulo.Marca.ToString();
                     cbCategoria.Text = articulo.Categoria.ToString();
-        
                     cbCategoria.SelectedValue = articulo.Categoria.Id;
                     cbMarca.SelectedValue = articulo.Marca.Id;
                 }
@@ -126,7 +128,7 @@ namespace Mercado
 
             alta.ShowDialog();
            
-            articulo.listaImagenes = alta.ListaUrl.ToList() ;
+        
 
         }
     }

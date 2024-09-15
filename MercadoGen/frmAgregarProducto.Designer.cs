@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAgregarProducto));
             this.Nombre = new System.Windows.Forms.Label();
             this.Marca = new System.Windows.Forms.Label();
             this.Precio = new System.Windows.Forms.Label();
@@ -86,21 +87,21 @@
             this.textNombre.Location = new System.Drawing.Point(89, 72);
             this.textNombre.Name = "textNombre";
             this.textNombre.Size = new System.Drawing.Size(121, 20);
-            this.textNombre.TabIndex = 7;
+            this.textNombre.TabIndex = 1;
             // 
             // textPrecio
             // 
             this.textPrecio.Location = new System.Drawing.Point(89, 140);
             this.textPrecio.Name = "textPrecio";
             this.textPrecio.Size = new System.Drawing.Size(121, 20);
-            this.textPrecio.TabIndex = 9;
+            this.textPrecio.TabIndex = 3;
             // 
             // textCodigo
             // 
             this.textCodigo.Location = new System.Drawing.Point(89, 36);
             this.textCodigo.Name = "textCodigo";
             this.textCodigo.Size = new System.Drawing.Size(121, 20);
-            this.textCodigo.TabIndex = 10;
+            this.textCodigo.TabIndex = 0;
             this.textCodigo.TextChanged += new System.EventHandler(this.textCodigo_TextChanged);
             // 
             // btnAceptar
@@ -108,7 +109,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(274, 125);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 13;
+            this.btnAceptar.TabIndex = 7;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -118,7 +119,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(274, 187);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 14;
+            this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -138,7 +139,7 @@
             this.cbCategoria.Location = new System.Drawing.Point(89, 213);
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(121, 21);
-            this.cbCategoria.TabIndex = 16;
+            this.cbCategoria.TabIndex = 5;
             // 
             // cbMarca
             // 
@@ -146,7 +147,7 @@
             this.cbMarca.Location = new System.Drawing.Point(89, 178);
             this.cbMarca.Name = "cbMarca";
             this.cbMarca.Size = new System.Drawing.Size(121, 21);
-            this.cbMarca.TabIndex = 17;
+            this.cbMarca.TabIndex = 4;
             // 
             // Descripcion
             // 
@@ -162,16 +163,18 @@
             this.txtDescripcion.Location = new System.Drawing.Point(89, 107);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(121, 20);
-            this.txtDescripcion.TabIndex = 19;
+            this.txtDescripcion.TabIndex = 2;
             // 
             // btnAgregarImagen
             // 
+            this.btnAgregarImagen.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnAgregarImagen.ForeColor = System.Drawing.SystemColors.Control;
             this.btnAgregarImagen.Location = new System.Drawing.Point(89, 260);
             this.btnAgregarImagen.Name = "btnAgregarImagen";
             this.btnAgregarImagen.Size = new System.Drawing.Size(130, 25);
-            this.btnAgregarImagen.TabIndex = 20;
+            this.btnAgregarImagen.TabIndex = 6;
             this.btnAgregarImagen.Text = "Agregar Imagenes";
-            this.btnAgregarImagen.UseVisualStyleBackColor = true;
+            this.btnAgregarImagen.UseVisualStyleBackColor = false;
             this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
             // 
             // FrmAgregarProducto
@@ -194,7 +197,11 @@
             this.Controls.Add(this.Precio);
             this.Controls.Add(this.Marca);
             this.Controls.Add(this.Nombre);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(420, 376);
+            this.MinimumSize = new System.Drawing.Size(420, 376);
             this.Name = "FrmAgregarProducto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AgregarProducto";
             this.Load += new System.EventHandler(this.FrmAgregarProducto_Load);
             this.ResumeLayout(false);

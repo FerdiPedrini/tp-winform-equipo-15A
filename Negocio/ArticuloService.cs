@@ -15,7 +15,8 @@ namespace Negocio
 {
     public class ArticuloService
     {
-        
+       
+
 
         public void modificar(Articulo articulo)
         {
@@ -63,11 +64,22 @@ namespace Negocio
 
                 while (accesoDatos.Lector.Read())
                 {
+                   
+                    int indiceArticuloExistente = lista.FindIndex(a => a.Id == (int)accesoDatos.Lector["Id"]);
+                    
+                    if (indiceArticuloExistente != -1)
+                    {
+                        
+                        Imagen imagen = new Imagen();
+                        imagen.UrlImagen = (string)accesoDatos.Lector["UrlImagen"];
+                        lista[indiceArticuloExistente].listaImagenes.Add(imagen);
+                        continue;
+                    }
 
 
                     Articulo articulo = new Articulo();
-                    articulo.Id = (int)accesoDatos.Lector["Id"];
 
+                    articulo.Id = (int)accesoDatos.Lector["Id"];
                     articulo.CodigoArticulo = (string)accesoDatos.Lector["Codigo"];
                     articulo.Nombre = (string)accesoDatos.Lector["Nombre"];
                     articulo.Descripcion = (string)accesoDatos.Lector["Descripcion"];
@@ -125,9 +137,44 @@ namespace Negocio
                 _accesoDatos.setearParametro("@IdMarca", _articulo.Marca.Id);
                 _accesoDatos.setearParametro("@IdCategoria", _articulo.Categoria.Id);
                     
-                    _accesoDatos.ejecutarAccion();
+                  
+
+                int idNuevoArticulo = _accesoDatos.insertarYobtenerId();
+                 _articulo.Id = idNuevoArticulo;
 
 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+
+            }
+            finally
+            {
+
+                _accesoDatos.cerrarConexion();
+
+                if (_articulo.listaImagenes != null)
+                 
+                    this.agregarImagenes(_articulo);
+               
+                
+
+            }
+
+        }
+        
+       
+
+        private void quitarImagenes(int idArticulo)
+        {
+            AccesoDatos _accesoDatos = new AccesoDatos();
+            try
+            {
+                _accesoDatos.setearConsulta("DELETE FROM IMAGENES WHERE IdArticulo = @Id");
+                _accesoDatos.setearParametro("@Id", idArticulo);
+                _accesoDatos.ejecutarAccion();
 
             }
             catch (Exception ex)
@@ -137,17 +184,57 @@ namespace Negocio
             }
             finally
             {
-
                 _accesoDatos.cerrarConexion();
+            }
+        }
+        private void agregarImagen(Imagen imagen, int idArticulo)
+        {
+            AccesoDatos _accesodatos = new AccesoDatos();
+            try
+            {
+                _accesodatos.setearConsulta("INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@IdArticulo, @UrlImagen)");
+                _accesodatos.setearParametro("@IdArticulo", idArticulo);
+                _accesodatos.setearParametro("@UrlImagen", imagen.UrlImagen);
+                _accesodatos.ejecutarAccion();
 
             }
-            
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _accesodatos.cerrarConexion();
+            }
+        }
+        private void agregarImagenes(Articulo articulo)
+        {
+            int idArticulo = articulo.Id;
+            this.quitarImagenes(idArticulo);
+
+            try
+            {
+                // Agregar imagenes relacionadas
+
+                foreach (Imagen imagen in articulo.listaImagenes)
+                {
+                    this.agregarImagen(imagen, idArticulo);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+          
         }
         public void eliminar(int id)
         {
             AccesoDatos _accesoDatos = new AccesoDatos();
             try
             {
+
 
                 _accesoDatos.setearConsulta("delete from Articulos where id = @id");
                 _accesoDatos.setearParametro("@id", id);

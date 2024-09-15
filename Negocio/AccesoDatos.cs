@@ -50,6 +50,8 @@ namespace Negocio
             }
         }
 
+      
+
         public void ejecutarAccion()
         {
             comando.Connection = conexion;
@@ -57,6 +59,22 @@ namespace Negocio
             {
                 conexion.Open();
                 comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public int insertarYobtenerId()
+        {
+
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                return (int)comando.ExecuteScalar();
+
             }
             catch (Exception ex)
             {
@@ -89,7 +107,10 @@ namespace Negocio
         public void cerrarConexion()
         {
             if (lector != null)
+            {
+
                 lector.Close();
+            }
             conexion.Close();
 
         }
