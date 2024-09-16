@@ -34,14 +34,11 @@
             this.agregarProducto = new System.Windows.Forms.Button();
             this.btnEliminarFisico = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.filtroRapidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.filtroArticuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutMercadoGenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
+            this.btnFiltrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArt)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvListaProd
@@ -99,57 +96,46 @@
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // menuStrip1
+            // label1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.herramientasToolStripMenuItem,
-            this.aboutMercadoGenToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(988, 24);
-            this.menuStrip1.TabIndex = 5;
-            this.menuStrip1.Text = "menuStrip1";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(50, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Filtrar";
             // 
-            // herramientasToolStripMenuItem
+            // txtFiltro
             // 
-            this.herramientasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.filtroRapidoToolStripMenuItem,
-            this.filtroArticuloToolStripMenuItem});
-            this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
-            this.herramientasToolStripMenuItem.Text = "Herramientas";
+            this.txtFiltro.Location = new System.Drawing.Point(98, 13);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(393, 20);
+            this.txtFiltro.TabIndex = 6;
             // 
-            // filtroRapidoToolStripMenuItem
+            // btnFiltrar
             // 
-            this.filtroRapidoToolStripMenuItem.Name = "filtroRapidoToolStripMenuItem";
-            this.filtroRapidoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.filtroRapidoToolStripMenuItem.Text = "Filtro rapido";
-            // 
-            // filtroArticuloToolStripMenuItem
-            // 
-            this.filtroArticuloToolStripMenuItem.Name = "filtroArticuloToolStripMenuItem";
-            this.filtroArticuloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.filtroArticuloToolStripMenuItem.Text = "Filtro articulo";
-            // 
-            // aboutMercadoGenToolStripMenuItem
-            // 
-            this.aboutMercadoGenToolStripMenuItem.Name = "aboutMercadoGenToolStripMenuItem";
-            this.aboutMercadoGenToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.aboutMercadoGenToolStripMenuItem.Text = "About Us";
+            this.btnFiltrar.Location = new System.Drawing.Point(497, 10);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(120, 23);
+            this.btnFiltrar.TabIndex = 7;
+            this.btnFiltrar.Text = "Filtrar";
+            this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // Mercado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(988, 433);
+            this.Controls.Add(this.btnFiltrar);
+            this.Controls.Add(this.txtFiltro);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEliminarFisico);
             this.Controls.Add(this.agregarProducto);
             this.Controls.Add(this.pbxArt);
             this.Controls.Add(this.dgvListaProd);
-            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.MaximumSize = new System.Drawing.Size(1004, 472);
             this.MinimumSize = new System.Drawing.Size(1004, 472);
             this.Name = "Mercado";
@@ -158,8 +144,6 @@
             this.Load += new System.EventHandler(this.MercadoGen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArt)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,11 +157,9 @@
         private System.Windows.Forms.Button agregarProducto;
         private System.Windows.Forms.Button btnEliminarFisico;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem herramientasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem filtroRapidoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem filtroArticuloToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutMercadoGenToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtFiltro;
+        private System.Windows.Forms.Button btnFiltrar;
     }
 }
 

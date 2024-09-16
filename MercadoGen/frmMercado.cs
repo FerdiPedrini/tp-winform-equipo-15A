@@ -45,9 +45,11 @@ namespace Mercado
 
         private void dgvListaProd_SelectionChanged(object sender, EventArgs e)
         {
-            Articulo seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem;
-            cargarImagen(seleccionado.Imagen.UrlImagen);
-
+            if (dgvListaProd.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem;
+                cargarImagen(seleccionado.Imagen.UrlImagen);
+            }
 
         }
         private void cargarImagen ( string Urlimagen  )
@@ -125,6 +127,26 @@ namespace Mercado
             FrmAgregarProducto frmmodificar = new FrmAgregarProducto(seleccionado,modificar);
             frmmodificar.ShowDialog();
             cargaDataGrip();
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltrada;
+            string filtro =txtFiltro.Text;
+
+            if(filtro !=" ")
+            {
+                listaFiltrada = listaArticulos.FindAll(y => y.CodigoArticulo.ToUpper().Contains(filtro.ToUpper()) || y.Categoria.Descripcion.ToUpper().Contains(filtro.ToUpper()) || y.Marca.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada=listaArticulos;
+            }
+
+           
+            dgvListaProd.DataSource = null;
+            dgvListaProd.DataSource = listaFiltrada;
+            ocultarColumnas();
         }
     }
 }
