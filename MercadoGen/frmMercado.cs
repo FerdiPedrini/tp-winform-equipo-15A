@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,75 +35,39 @@ namespace Mercado
         public void cargaDataGrip()
         {   
             
-            
-            ArticuloService articuloService = new ArticuloService();
-            try
-            {
+            ArticuloService articuloService = new ArticuloService(); 
+                
                 listaArticulos = articuloService.listar();
                 dgvListaProd.DataSource = listaArticulos;
                 ocultarColumnas();
-                cargarImagen(listaArticulos[0].listaImagenes);
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.ToString());
-            }
-           
-
-
+                cargarImagen(listaArticulos[0].Imagen.UrlImagen);
         }
 
         private void dgvListaProd_SelectionChanged(object sender, EventArgs e)
         {
-          
+            Articulo seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem;
+            cargarImagen(seleccionado.Imagen.UrlImagen);
+
+
         }
-        private void cargarImagen ( List<Imagen> ListaImgArt,int indice = 0 , bool siguienteImagen = true   )
+        private void cargarImagen ( string Urlimagen  )
         {
-          
-           if (ListaImgArt.Count == 0)
-            {
-                pbxArt.Load("https://img.freepik.com/free-vector/funny-error-404-background-design_1167-219.jpg?t=st=1725827418~exp=1725831018~hmac=54590de3abb1e78d752a2b192ee5f3553e873955a510b935d7dd33c8d56a8a18&w=740");
-
-                return;
-            }
-
-            int i = indice;
-            do
-            {
-
                 try
                 {
 
-                    pbxArt.Load(ListaImgArt[i].UrlImagen);
+                    pbxArt.Load(Urlimagen);
 
                     return;
 
                 }
                 catch (Exception)
                 {
+                    pbxArt.Load("https://img.freepik.com/free-vector/funny-error-404-background-design_1167-219.jpg?t=st=1725827418~exp=1725831018~hmac=54590de3abb1e78d752a2b192ee5f3553e873955a510b935d7dd33c8d56a8a18&w=740");
+                    return;
 
-                    if (siguienteImagen)
-                    {
-                        if (i < ListaImgArt.Count - 1)
-                            i++;
-                        else
-                            i = 0;
-
-                    }
-                    else
-                    {
-                        if (i != 0)
-                            i--;
-                        else
-                            i = ListaImgArt.Count - 1;
-                    }
-                }
-            } while (i != indice);
-
-                pbxArt.Load("https://img.freepik.com/free-vector/funny-error-404-background-design_1167-219.jpg?t=st=1725827418~exp=1725831018~hmac=54590de3abb1e78d752a2b192ee5f3553e873955a510b935d7dd33c8d56a8a18&w=740");
-                return;
+            }
             
+
         }
         
         private void ocultarColumnas() 

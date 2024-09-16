@@ -14,6 +14,11 @@ namespace Dominio
 
         public string UrlImagen { get;set;}
 
+        public override string ToString()
+        {
+            return UrlImagen;
+        }
+
 
     }
 }

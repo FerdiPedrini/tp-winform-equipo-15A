@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgregarImagen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AgregarImagen.Designer.cs">
-      <DependentUpon>AgregarImagen.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmAgregarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,9 +60,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AgregarImagen.resx">
-      <DependentUpon>AgregarImagen.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarProducto.resx">
       <DependentUpon>frmAgregarProducto.cs</DependentUpon>
     </EmbeddedResource>

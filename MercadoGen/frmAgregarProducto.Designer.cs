@@ -43,7 +43,8 @@
             this.cbMarca = new System.Windows.Forms.ComboBox();
             this.Descripcion = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.btnAgregarImagen = new System.Windows.Forms.Button();
+            this.lblUrlImagen = new System.Windows.Forms.Label();
+            this.txtUrlImagen = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Nombre
@@ -102,7 +103,6 @@
             this.textCodigo.Name = "textCodigo";
             this.textCodigo.Size = new System.Drawing.Size(121, 20);
             this.textCodigo.TabIndex = 0;
-            this.textCodigo.TextChanged += new System.EventHandler(this.textCodigo_TextChanged);
             // 
             // btnAceptar
             // 
@@ -165,24 +165,31 @@
             this.txtDescripcion.Size = new System.Drawing.Size(121, 20);
             this.txtDescripcion.TabIndex = 2;
             // 
-            // btnAgregarImagen
+            // lblUrlImagen
             // 
-            this.btnAgregarImagen.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnAgregarImagen.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAgregarImagen.Location = new System.Drawing.Point(89, 260);
-            this.btnAgregarImagen.Name = "btnAgregarImagen";
-            this.btnAgregarImagen.Size = new System.Drawing.Size(130, 25);
-            this.btnAgregarImagen.TabIndex = 6;
-            this.btnAgregarImagen.Text = "Agregar Imagenes";
-            this.btnAgregarImagen.UseVisualStyleBackColor = false;
-            this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
+            this.lblUrlImagen.AutoSize = true;
+            this.lblUrlImagen.Location = new System.Drawing.Point(34, 269);
+            this.lblUrlImagen.Name = "lblUrlImagen";
+            this.lblUrlImagen.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblUrlImagen.Size = new System.Drawing.Size(55, 13);
+            this.lblUrlImagen.TabIndex = 19;
+            this.lblUrlImagen.Text = "UrlImagen";
+            this.lblUrlImagen.UseMnemonic = false;
+            // 
+            // txtUrlImagen
+            // 
+            this.txtUrlImagen.Location = new System.Drawing.Point(89, 262);
+            this.txtUrlImagen.Name = "txtUrlImagen";
+            this.txtUrlImagen.Size = new System.Drawing.Size(100, 20);
+            this.txtUrlImagen.TabIndex = 20;
             // 
             // FrmAgregarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 337);
-            this.Controls.Add(this.btnAgregarImagen);
+            this.Controls.Add(this.txtUrlImagen);
+            this.Controls.Add(this.lblUrlImagen);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.Descripcion);
             this.Controls.Add(this.cbMarca);
@@ -225,6 +232,7 @@
         private System.Windows.Forms.ComboBox cbMarca;
         private System.Windows.Forms.Label Descripcion;
         private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.Button btnAgregarImagen;
+        private System.Windows.Forms.Label lblUrlImagen;
+        private System.Windows.Forms.TextBox txtUrlImagen;
     }
 }

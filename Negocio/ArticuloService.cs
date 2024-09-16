@@ -29,7 +29,7 @@ namespace Negocio
                 _accesoDatos.setearParametro("@codigo", articulo.CodigoArticulo);
                 _accesoDatos.setearParametro("@nombre", articulo.Nombre);
                 _accesoDatos.setearParametro("@desc", articulo.Descripcion);
-                //_accesoDatos.setearParametro("@img"//, articulo.UrlImagen);
+             
                 _accesoDatos.setearParametro("@idCategoria", articulo.Categoria.Id);
                 _accesoDatos.setearParametro("@precio", articulo.Precio);
                 _accesoDatos.setearParametro("@idMarca", articulo.Marca.Id);
@@ -54,29 +54,15 @@ namespace Negocio
             try
             {
                
-                accesoDatos.setearConsulta("SELECT A.Id, Codigo, Nombre, A.Descripcion, A.IdMarca, A.IdCategoria, M.Descripcion Nombre_Marca, "
-                    + "C.Descripcion Nombre_Categoria, M.Id Id_Marca, C.Id Id_Categoria, A.Precio, I.ImagenUrl UrlImagen FROM ARTICULOS A JOIN CATEGORIAS C " +
-                    "ON A.IdCategoria = C.Id JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON I.IdArticulo = A.Id ORDER BY A.Id ASC");
+                accesoDatos.setearConsulta("SELECT A.Id, Codigo, Nombre, A.Descripcion, A.IdMarca, A.IdCategoria, M.Descripcion Nombre_Marca,"+"C.Descripcion Nombre_Categoria, M.Id Id_Marca, C.Id Id_Categoria, A.Precio,I.IdArticulo IdArt, I.ImagenUrl UrlImagen FROM ARTICULOS A JOIN CATEGORIAS C "+"ON A.IdCategoria = C.Id JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN IMAGENES I ON I.IdArticulo = A.Id ORDER BY A.Id ASC");
 
-
+                
 
                 accesoDatos.ejecutarLectura();
 
                 while (accesoDatos.Lector.Read())
                 {
                    
-                    int indiceArticuloExistente = lista.FindIndex(a => a.Id == (int)accesoDatos.Lector["Id"]);
-                    
-                    if (indiceArticuloExistente != -1)
-                    {
-                        
-                        Imagen imagen = new Imagen();
-                        imagen.UrlImagen = (string)accesoDatos.Lector["UrlImagen"];
-                        lista[indiceArticuloExistente].listaImagenes.Add(imagen);
-                        continue;
-                    }
-
-
                     Articulo articulo = new Articulo();
 
                     articulo.Id = (int)accesoDatos.Lector["Id"];
@@ -96,18 +82,11 @@ namespace Negocio
                     articulo.Categoria.Id = (int)accesoDatos.Lector["IdCategoria"];
 
                     articulo.Precio = (decimal)accesoDatos.Lector["Precio"];
+                    
+                    articulo.Imagen = new Imagen();
+                    articulo.Imagen.UrlImagen = (string)accesoDatos.Lector["UrlImagen"];
 
                     
-                    articulo.listaImagenes = new List<Imagen>();
-                    
-                    if (!(accesoDatos.Lector["UrlImagen"] is DBNull))
-                    {
-                        Imagen imagen = new Imagen();
-                        imagen.UrlImagen = (string)accesoDatos.Lector["UrlImagen"];
-                        articulo.listaImagenes.Add(imagen);
-                    }
-   
-
                     lista.Add(articulo);
                 }
 
@@ -123,24 +102,28 @@ namespace Negocio
                 accesoDatos.cerrarConexion();
             }
         }
-        public void agregarProducto(Articulo _articulo)
+
+        public int agregarProducto(Articulo _articulo)
         {
             AccesoDatos _accesoDatos = new AccesoDatos();
+            ImagenService aux = new ImagenService();
+         
+
 
             try
             {
-                _accesoDatos.setearConsulta("INSERT INTO ARTICULOS(Codigo, Nombre, Precio, Descripcion, IdMarca, IdCategoria) VALUES(@codigo,@nombre,@precio,@descripcion,@IdMarca,@IdCategoria)");
+                
+                _accesoDatos.setearConsulta("INSERT INTO ARTICULOS(Codigo, Nombre, Precio, Descripcion, IdMarca, IdCategoria)OUTPUT inserted.Id VALUES(@codigo,@nombre,@precio,@descripcion,@IdMarca,@IdCategoria)");
                 _accesoDatos.setearParametro("@codigo", _articulo.CodigoArticulo);
                 _accesoDatos.setearParametro("@nombre", _articulo.Nombre);
                 _accesoDatos.setearParametro("@precio",_articulo.Precio);
                 _accesoDatos.setearParametro("@descripcion", _articulo.Descripcion);
                 _accesoDatos.setearParametro("@IdMarca", _articulo.Marca.Id);
                 _accesoDatos.setearParametro("@IdCategoria", _articulo.Categoria.Id);
-                    
-                  
 
-                int idNuevoArticulo = _accesoDatos.insertarYobtenerId();
-                 _articulo.Id = idNuevoArticulo;
+                int IdArticuloNuevo = _accesoDatos.insertarYobtenerId();
+
+                return IdArticuloNuevo;
 
 
             }
@@ -155,80 +138,14 @@ namespace Negocio
 
                 _accesoDatos.cerrarConexion();
 
-                if (_articulo.listaImagenes != null)
-                 
-                    this.agregarImagenes(_articulo);
-               
-                
 
             }
 
         }
         
        
-
-        private void quitarImagenes(int idArticulo)
-        {
-            AccesoDatos _accesoDatos = new AccesoDatos();
-            try
-            {
-                _accesoDatos.setearConsulta("DELETE FROM IMAGENES WHERE IdArticulo = @Id");
-                _accesoDatos.setearParametro("@Id", idArticulo);
-                _accesoDatos.ejecutarAccion();
-
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            finally
-            {
-                _accesoDatos.cerrarConexion();
-            }
-        }
-        private void agregarImagen(Imagen imagen, int idArticulo)
-        {
-            AccesoDatos _accesodatos = new AccesoDatos();
-            try
-            {
-                _accesodatos.setearConsulta("INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@IdArticulo, @UrlImagen)");
-                _accesodatos.setearParametro("@IdArticulo", idArticulo);
-                _accesodatos.setearParametro("@UrlImagen", imagen.UrlImagen);
-                _accesodatos.ejecutarAccion();
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                _accesodatos.cerrarConexion();
-            }
-        }
-        private void agregarImagenes(Articulo articulo)
-        {
-            int idArticulo = articulo.Id;
-            this.quitarImagenes(idArticulo);
-
-            try
-            {
-                // Agregar imagenes relacionadas
-
-                foreach (Imagen imagen in articulo.listaImagenes)
-                {
-                    this.agregarImagen(imagen, idArticulo);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-
-            }
-          
-        }
+        
+       
         public void eliminar(int id)
         {
             AccesoDatos _accesoDatos = new AccesoDatos();

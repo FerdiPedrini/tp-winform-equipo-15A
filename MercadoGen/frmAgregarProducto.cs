@@ -16,6 +16,7 @@ namespace Mercado
     public partial class FrmAgregarProducto : Form
     {
         private Articulo articulo { get; set; } = new Articulo();
+        private Imagen imagen { get; set; } =new Imagen();
         private bool modificar = false;
 
         public FrmAgregarProducto()
@@ -39,20 +40,23 @@ namespace Mercado
         {
 
             ArticuloService ArticuloNuevo = new ArticuloService();
+            ImagenService aux = new ImagenService();
+
 
             try
             {
-                if (articulo == null)
-                articulo = new Articulo();
-
+                if (articulo == null && imagen == null)
+                {
+                    articulo = new Articulo();
+                    imagen = new Imagen();
+                }
             articulo.CodigoArticulo=textCodigo.Text;
             articulo.Nombre = textNombre.Text;
             articulo.Descripcion = txtDescripcion.Text;
             articulo.Precio = Convert.ToDecimal(textPrecio.Text);
             articulo.Marca = (Marca)cbMarca.SelectedItem;        
             articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
-            
-              
+            imagen.UrlImagen = txtUrlImagen.Text;
 
                 if (articulo.Id != 0)
                 {
@@ -62,7 +66,10 @@ namespace Mercado
 
                 else
                 {
-                    ArticuloNuevo.agregarProducto(articulo);
+                    
+                    int idArt = ArticuloNuevo.agregarProducto(articulo);
+                    aux.agregarImagen(imagen,idArt);
+
                     MessageBox.Show("PRODUCTO AGREGADO CON EXITO");
                 }
                
@@ -76,15 +83,12 @@ namespace Mercado
  
         }
 
-        private void textCodigo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void FrmAgregarProducto_Load(object sender, EventArgs e)
         {
             CategoriaService categoria = new CategoriaService();
             MarcaService marca = new MarcaService();
+           
             try
             {
                 cbCategoria.DataSource = categoria.listar();
@@ -93,10 +97,7 @@ namespace Mercado
                 cbMarca.DataSource = marca.listar();
                 cbMarca.ValueMember = "Id";
                 cbMarca.DisplayMember = "Descripcion";
-               
 
-               
-               
                if(modificar)
                
                 {
@@ -122,14 +123,8 @@ namespace Mercado
             
         }
 
-        private void btnAgregarImagen_Click(object sender, EventArgs e)
-        {
-            frmAgregarImagen alta = new frmAgregarImagen();
-
-            alta.ShowDialog();
-           
         
 
-        }
+     
     }
 }
