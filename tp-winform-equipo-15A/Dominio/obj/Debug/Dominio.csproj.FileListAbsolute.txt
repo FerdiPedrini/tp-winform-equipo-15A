@@ -1,0 +1,6 @@
+C:\Users\Nico\Desktop\WinformsReEntrega\tp-winform-equipo-15A\Dominio\bin\Debug\Dominio.dll
+C:\Users\Nico\Desktop\WinformsReEntrega\tp-winform-equipo-15A\Dominio\bin\Debug\Dominio.pdb
+C:\Users\Nico\Desktop\WinformsReEntrega\tp-winform-equipo-15A\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\Nico\Desktop\WinformsReEntrega\tp-winform-equipo-15A\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\Nico\Desktop\WinformsReEntrega\tp-winform-equipo-15A\Dominio\obj\Debug\Dominio.dll
+C:\Users\Nico\Desktop\WinformsReEntrega\tp-winform-equipo-15A\Dominio\obj\Debug\Dominio.pdb
