@@ -18,7 +18,7 @@ namespace Mercado
     public partial class Mercado : Form
     {
         private List<Articulo> listaArticulos;
-       
+        private int index = 0;
 
         public Mercado()
         {
@@ -147,6 +147,32 @@ namespace Mercado
             dgvListaProd.DataSource = null;
             dgvListaProd.DataSource = listaFiltrada;
             ocultarColumnas();
+        }
+
+        private void pbxArt_Click(object sender, EventArgs e)
+        {
+            
+           Articulo seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem;
+            
+
+           if (seleccionado.Imagenes.Count-1 < index)
+            {
+                index = 0;
+            }
+           string segunda_imagen = seleccionado.Imagenes[index].UrlImagen;
+            cargarImagen(segunda_imagen);
+
+            if (seleccionado.Imagenes.Count-1<index+1)
+            {
+                index++;
+
+            } else
+            {
+                index = 0;
+            }
+            
+
+
         }
     }
 }

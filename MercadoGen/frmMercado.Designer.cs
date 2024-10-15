@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mercado));
             this.dgvListaProd = new System.Windows.Forms.DataGridView();
-            this.pbxArt = new System.Windows.Forms.PictureBox();
             this.agregarProducto = new System.Windows.Forms.Button();
             this.btnEliminarFisico = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.btnFiltrar = new System.Windows.Forms.Button();
+            this.pbxArt = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArt)).BeginInit();
             this.SuspendLayout();
@@ -50,15 +50,6 @@
             this.dgvListaProd.TabIndex = 0;
             this.dgvListaProd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaProd_CellContentClick);
             this.dgvListaProd.SelectionChanged += new System.EventHandler(this.dgvListaProd_SelectionChanged);
-            // 
-            // pbxArt
-            // 
-            this.pbxArt.Location = new System.Drawing.Point(669, 38);
-            this.pbxArt.Name = "pbxArt";
-            this.pbxArt.Size = new System.Drawing.Size(312, 331);
-            this.pbxArt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxArt.TabIndex = 1;
-            this.pbxArt.TabStop = false;
             // 
             // agregarProducto
             // 
@@ -122,6 +113,16 @@
             this.btnFiltrar.UseVisualStyleBackColor = true;
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
+            // pbxArt
+            // 
+            this.pbxArt.Location = new System.Drawing.Point(669, 38);
+            this.pbxArt.Name = "pbxArt";
+            this.pbxArt.Size = new System.Drawing.Size(312, 331);
+            this.pbxArt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxArt.TabIndex = 1;
+            this.pbxArt.TabStop = false;
+            this.pbxArt.Click += new System.EventHandler(this.pbxArt_Click);
+            // 
             // Mercado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,13 +154,13 @@
 
         
         private System.Windows.Forms.DataGridView dgvListaProd;
-        private System.Windows.Forms.PictureBox pbxArt;
         private System.Windows.Forms.Button agregarProducto;
         private System.Windows.Forms.Button btnEliminarFisico;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.Button btnFiltrar;
+        private System.Windows.Forms.PictureBox pbxArt;
     }
 }
 
