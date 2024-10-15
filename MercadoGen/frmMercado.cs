@@ -40,7 +40,7 @@ namespace Mercado
                 listaArticulos = articuloService.listar();
                 dgvListaProd.DataSource = listaArticulos;
                 ocultarColumnas();
-                cargarImagen(listaArticulos[0].Imagen.UrlImagen);
+            cargarImagen(listaArticulos[0].FirstImage());
         }
 
         private void dgvListaProd_SelectionChanged(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace Mercado
             if (dgvListaProd.CurrentRow != null)
             {
                 Articulo seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem;
-                cargarImagen(seleccionado.Imagen.UrlImagen);
+                cargarImagen(seleccionado.FirstImage());
             }
 
         }

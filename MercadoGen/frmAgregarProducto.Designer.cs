@@ -44,7 +44,7 @@
             this.Descripcion = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.lblUrlImagen = new System.Windows.Forms.Label();
-            this.txtUrlImagen = new System.Windows.Forms.TextBox();
+            this.BTN_AgregarImagenes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Nombre
@@ -176,19 +176,22 @@
             this.lblUrlImagen.Text = "UrlImagen";
             this.lblUrlImagen.UseMnemonic = false;
             // 
-            // txtUrlImagen
+            // BTN_AgregarImagenes
             // 
-            this.txtUrlImagen.Location = new System.Drawing.Point(89, 262);
-            this.txtUrlImagen.Name = "txtUrlImagen";
-            this.txtUrlImagen.Size = new System.Drawing.Size(100, 20);
-            this.txtUrlImagen.TabIndex = 20;
+            this.BTN_AgregarImagenes.Location = new System.Drawing.Point(96, 269);
+            this.BTN_AgregarImagenes.Name = "BTN_AgregarImagenes";
+            this.BTN_AgregarImagenes.Size = new System.Drawing.Size(75, 23);
+            this.BTN_AgregarImagenes.TabIndex = 20;
+            this.BTN_AgregarImagenes.Text = "Agregar Imagenes";
+            this.BTN_AgregarImagenes.UseVisualStyleBackColor = true;
+            this.BTN_AgregarImagenes.Click += new System.EventHandler(this.BTN_AgregarImagenes_Click);
             // 
             // FrmAgregarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 337);
-            this.Controls.Add(this.txtUrlImagen);
+            this.Controls.Add(this.BTN_AgregarImagenes);
             this.Controls.Add(this.lblUrlImagen);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.Descripcion);
@@ -233,6 +236,6 @@
         private System.Windows.Forms.Label Descripcion;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label lblUrlImagen;
-        private System.Windows.Forms.TextBox txtUrlImagen;
+        private System.Windows.Forms.Button BTN_AgregarImagenes;
     }
 }

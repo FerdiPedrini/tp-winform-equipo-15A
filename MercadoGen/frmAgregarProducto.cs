@@ -56,7 +56,7 @@ namespace Mercado
             articulo.Precio = Convert.ToDecimal(textPrecio.Text);
             articulo.Marca = (Marca)cbMarca.SelectedItem;        
             articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
-            imagen.UrlImagen = txtUrlImagen.Text;
+            //imagen.UrlImagen = txtUrlImagen.Text;
 
                 if (articulo.Id != 0)
                 {
@@ -123,8 +123,9 @@ namespace Mercado
             
         }
 
-        
-
-     
+        private void BTN_AgregarImagenes_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
