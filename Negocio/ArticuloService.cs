@@ -95,16 +95,31 @@ namespace Negocio
             }
         }
 
+
+        private void AgregarImagenesAarticulo(int idArticulo, Articulo articulo)
+        {
+            ImagenService imagenService = new ImagenService();
+            try
+            {
+                foreach (var imagen in articulo.Imagenes)
+                {
+                    imagenService.agregarImagen(imagen, idArticulo);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public int agregarProducto(Articulo _articulo)
         {
             AccesoDatos _accesoDatos = new AccesoDatos();
             ImagenService aux = new ImagenService();
-         
-
+            string prueba = _articulo.Imagenes[0].UrlImagen;
 
             try
             {
-                
                 _accesoDatos.setearConsulta("INSERT INTO ARTICULOS(Codigo, Nombre, Precio, Descripcion, IdMarca, IdCategoria)OUTPUT inserted.Id VALUES(@codigo,@nombre,@precio,@descripcion,@IdMarca,@IdCategoria)");
                 _accesoDatos.setearParametro("@codigo", _articulo.CodigoArticulo);
                 _accesoDatos.setearParametro("@nombre", _articulo.Nombre);
@@ -115,21 +130,16 @@ namespace Negocio
 
                 int IdArticuloNuevo = _accesoDatos.insertarYobtenerId();
 
+                AgregarImagenesAarticulo(IdArticuloNuevo, _articulo);
                 return IdArticuloNuevo;
-
-
             }
             catch (Exception ex)
             {
-
                 throw ex;
-
             }
             finally
             {
-
                 _accesoDatos.cerrarConexion();
-
 
             }
 

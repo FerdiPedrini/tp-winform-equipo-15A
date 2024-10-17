@@ -15,13 +15,19 @@ namespace Mercado
 {
     public partial class FrmAgregarProducto : Form
     {
-        private Articulo articulo { get; set; } = new Articulo();
-        private Imagen imagen { get; set; } =new Imagen();
-        private bool modificar = false;
+        public Articulo articulo { get; set; } = new Articulo();
+        public List<Imagen> ImagenesBuffer { get; set; } = new List<Imagen>();
+        public Imagen imagen { get; set; } =new Imagen();
+        public bool modificar = false;
+
+        public static frmAgregarIMG instance;
+       
+
 
         public FrmAgregarProducto()
         {
             InitializeComponent();
+            
         }
 
         public FrmAgregarProducto(Articulo articulo, bool modificar)
@@ -38,15 +44,18 @@ namespace Mercado
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-
+            Articulo vistaarticulo = articulo;
+            // Articulo art = articulo2;
             ArticuloService ArticuloNuevo = new ArticuloService();
-            ImagenService aux = new ImagenService();
+            ImagenService imagenService = new ImagenService();
+
+            
 
 
             try
             {
                 if (articulo == null && imagen == null)
-                {
+               {
                     articulo = new Articulo();
                     imagen = new Imagen();
                 }
@@ -56,8 +65,8 @@ namespace Mercado
             articulo.Precio = Convert.ToDecimal(textPrecio.Text);
             articulo.Marca = (Marca)cbMarca.SelectedItem;        
             articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
-            //imagen.UrlImagen = txtUrlImagen.Text;
-
+            articulo.Imagenes = MemoriaArticulo.Instance().Articulo.Imagenes;
+            
                 if (articulo.Id != 0)
                 {
                     ArticuloNuevo.modificar(articulo);
@@ -65,15 +74,18 @@ namespace Mercado
                 }
 
                 else
-                {
-                    
+                {                    
                     int idArt = ArticuloNuevo.agregarProducto(articulo);
-                    aux.agregarImagen(imagen,idArt);
 
                     MessageBox.Show("PRODUCTO AGREGADO CON EXITO");
+                    MemoriaArticulo.Instance().ReinicarMemoria();
                 }
-               
+
+                
+
                 Close();
+
+
             }
             catch (Exception ex)
             {
@@ -123,9 +135,17 @@ namespace Mercado
             
         }
 
+
         private void BTN_AgregarImagenes_Click(object sender, EventArgs e)
         {
+            frmAgregarIMG frmAgregarIMG = new frmAgregarIMG();
+            frmAgregarIMG.ShowDialog();
+        }
+
+        internal void recibirDatos(List<Imagen> listaImagen)
+        {
             
+            //articulo2.Imagenes = listaImagen;   
         }
     }
 }
