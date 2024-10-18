@@ -45,7 +45,7 @@
             // 
             // btnEliminarCria
             // 
-            this.btnEliminarCria.Location = new System.Drawing.Point(383, 233);
+            this.btnEliminarCria.Location = new System.Drawing.Point(394, 215);
             this.btnEliminarCria.Name = "btnEliminarCria";
             this.btnEliminarCria.Size = new System.Drawing.Size(75, 23);
             this.btnEliminarCria.TabIndex = 0;
@@ -98,9 +98,9 @@
             // 
             // txtAgregarMca
             // 
-            this.txtAgregarMca.Location = new System.Drawing.Point(26, 325);
+            this.txtAgregarMca.Location = new System.Drawing.Point(13, 325);
             this.txtAgregarMca.Name = "txtAgregarMca";
-            this.txtAgregarMca.Size = new System.Drawing.Size(127, 20);
+            this.txtAgregarMca.Size = new System.Drawing.Size(140, 20);
             this.txtAgregarMca.TabIndex = 8;
             // 
             // lblAgregarMarca
@@ -118,30 +118,33 @@
             this.dgvModificarMca.Name = "dgvModificarMca";
             this.dgvModificarMca.Size = new System.Drawing.Size(301, 200);
             this.dgvModificarMca.TabIndex = 10;
+            this.dgvModificarMca.SelectionChanged += new System.EventHandler(this.dgvModificarMca_SelectionChanged);
             // 
             // btnEliminarMca
             // 
-            this.btnEliminarMca.Location = new System.Drawing.Point(383, 481);
+            this.btnEliminarMca.Location = new System.Drawing.Point(394, 468);
             this.btnEliminarMca.Name = "btnEliminarMca";
             this.btnEliminarMca.Size = new System.Drawing.Size(75, 23);
             this.btnEliminarMca.TabIndex = 12;
             this.btnEliminarMca.Text = "Eliminar";
             this.btnEliminarMca.UseVisualStyleBackColor = true;
+            this.btnEliminarMca.Click += new System.EventHandler(this.btnEliminarMca_Click);
             // 
             // btnAgregarMca
             // 
-            this.btnAgregarMca.Location = new System.Drawing.Point(40, 373);
+            this.btnAgregarMca.Location = new System.Drawing.Point(26, 368);
             this.btnAgregarMca.Name = "btnAgregarMca";
             this.btnAgregarMca.Size = new System.Drawing.Size(111, 23);
             this.btnAgregarMca.TabIndex = 13;
             this.btnAgregarMca.Text = "Agregar marca";
             this.btnAgregarMca.UseVisualStyleBackColor = true;
+            this.btnAgregarMca.Click += new System.EventHandler(this.btnAgregarMca_Click);
             // 
             // frmModificarMcaCria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(481, 515);
+            this.ClientSize = new System.Drawing.Size(481, 495);
             this.Controls.Add(this.btnAgregarMca);
             this.Controls.Add(this.btnEliminarMca);
             this.Controls.Add(this.dgvModificarMca);

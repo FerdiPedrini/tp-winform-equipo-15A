@@ -109,3 +109,4 @@ C:\Users\Nico\Desktop\PruebaDEspues deerror\tp-winform-equipo-15A\MercadoGen\obj
 C:\Users\Nico\Desktop\PruebaDEspues deerror\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.exe
 C:\Users\Nico\Desktop\PruebaDEspues deerror\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.pdb
 C:\Users\Nico\Desktop\PruebaDEspues deerror\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.frmModificarMcaCria.resources
+D:\HP\Escritorio\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.frmModificarMcaCria.resources
