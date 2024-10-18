@@ -38,6 +38,7 @@
             this.btnFiltrar = new System.Windows.Forms.Button();
             this.pbxArt = new System.Windows.Forms.PictureBox();
             this.lblClickSiguienteImagen = new System.Windows.Forms.Label();
+            this.BtnAgregarCategoriaMarca = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArt)).BeginInit();
             this.SuspendLayout();
@@ -101,14 +102,14 @@
             // 
             this.txtFiltro.Location = new System.Drawing.Point(98, 13);
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(393, 20);
+            this.txtFiltro.Size = new System.Drawing.Size(280, 20);
             this.txtFiltro.TabIndex = 6;
             // 
             // btnFiltrar
             // 
-            this.btnFiltrar.Location = new System.Drawing.Point(497, 10);
+            this.btnFiltrar.Location = new System.Drawing.Point(394, 11);
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(120, 23);
+            this.btnFiltrar.Size = new System.Drawing.Size(72, 23);
             this.btnFiltrar.TabIndex = 7;
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
@@ -133,11 +134,22 @@
             this.lblClickSiguienteImagen.TabIndex = 8;
             this.lblClickSiguienteImagen.Text = "Haga click para ver la siguiente imagen";
             // 
+            // BtnAgregarCategoriaMarca
+            // 
+            this.BtnAgregarCategoriaMarca.Location = new System.Drawing.Point(482, 13);
+            this.BtnAgregarCategoriaMarca.Name = "BtnAgregarCategoriaMarca";
+            this.BtnAgregarCategoriaMarca.Size = new System.Drawing.Size(155, 23);
+            this.BtnAgregarCategoriaMarca.TabIndex = 9;
+            this.BtnAgregarCategoriaMarca.Text = "Agregar Marca o Categoria";
+            this.BtnAgregarCategoriaMarca.UseVisualStyleBackColor = true;
+            this.BtnAgregarCategoriaMarca.Click += new System.EventHandler(this.BtnAgregarCategoriaMarca_Click);
+            // 
             // Mercado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(988, 433);
+            this.Controls.Add(this.BtnAgregarCategoriaMarca);
             this.Controls.Add(this.lblClickSiguienteImagen);
             this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.txtFiltro);
@@ -173,6 +185,7 @@
         private System.Windows.Forms.Button btnFiltrar;
         private System.Windows.Forms.PictureBox pbxArt;
         private System.Windows.Forms.Label lblClickSiguienteImagen;
+        private System.Windows.Forms.Button BtnAgregarCategoriaMarca;
     }
 }
 

@@ -38,6 +38,7 @@ namespace Mercado
 
             imagen.UrlImagen = ImagenUrl;
             imagenService.agregarImagen(imagen, articulo.Id);
+            this.Close();
         }
     }
 }

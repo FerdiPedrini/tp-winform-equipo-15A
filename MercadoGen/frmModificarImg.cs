@@ -79,6 +79,7 @@ namespace Mercado
         {
             frmModNuevaImg frmModNuevaImg = new frmModNuevaImg(articulo);
             frmModNuevaImg.ShowDialog();
+            cargaDGVmodificarIMG();
         }
 
         private void btnModificarImg_Click(object sender, EventArgs e)
@@ -95,6 +96,7 @@ namespace Mercado
 
             frmSobreescribirUrl frmSobreescribirUrl = new frmSobreescribirUrl(articulo, ImagenSeleccionada);
             frmSobreescribirUrl.ShowDialog();
+            cargaDGVmodificarIMG();
         }
 
         private void btnEliminarImg_Click(object sender, EventArgs e)
@@ -109,7 +111,7 @@ namespace Mercado
             }
             ImagenSeleccionada = (Imagen)dgvModificarImg.CurrentRow.DataBoundItem;
             imagenService.eliminarImagen(ImagenSeleccionada,articulo.Id);
-
+            cargaDGVmodificarIMG();
         }
     }
 }

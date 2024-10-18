@@ -186,6 +186,10 @@ namespace Mercado
 
             }
 
-
+        private void BtnAgregarCategoriaMarca_Click(object sender, EventArgs e)
+        {
+            frmModificarMcaCria formModificarMcaCria = new frmModificarMcaCria();
+            formModificarMcaCria.ShowDialog();
         }
+    }
     }
