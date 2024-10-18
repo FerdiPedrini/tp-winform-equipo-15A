@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmModificarImg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModificarImg.Designer.cs">
+      <DependentUpon>frmModificarImg.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAgregarIMG.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmModificarImg.resx">
+      <DependentUpon>frmModificarImg.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarIMG.resx">
       <DependentUpon>frmAgregarIMG.cs</DependentUpon>
     </EmbeddedResource>

@@ -116,7 +116,7 @@ namespace Negocio
         {
             AccesoDatos _accesoDatos = new AccesoDatos();
             ImagenService aux = new ImagenService();
-            string prueba = _articulo.Imagenes[0].UrlImagen;
+           
 
             try
             {

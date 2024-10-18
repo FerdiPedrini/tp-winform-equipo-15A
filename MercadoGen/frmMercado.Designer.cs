@@ -47,9 +47,9 @@
             this.dgvListaProd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaProd.Location = new System.Drawing.Point(12, 38);
             this.dgvListaProd.Name = "dgvListaProd";
+            this.dgvListaProd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaProd.Size = new System.Drawing.Size(648, 331);
             this.dgvListaProd.TabIndex = 0;
-            this.dgvListaProd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaProd_CellContentClick);
             this.dgvListaProd.SelectionChanged += new System.EventHandler(this.dgvListaProd_SelectionChanged);
             // 
             // agregarProducto

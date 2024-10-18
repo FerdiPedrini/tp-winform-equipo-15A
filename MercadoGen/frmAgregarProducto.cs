@@ -45,13 +45,8 @@ namespace Mercado
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Articulo vistaarticulo = articulo;
-            // Articulo art = articulo2;
             ArticuloService ArticuloNuevo = new ArticuloService();
-            ImagenService imagenService = new ImagenService();
-
-            
-
-
+            ImagenService imagenService = new ImagenService();   
             try
             {
                 if (articulo == null && imagen == null)
@@ -67,7 +62,7 @@ namespace Mercado
             articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
             articulo.Imagenes = MemoriaArticulo.Instance().Articulo.Imagenes;
             
-                if (articulo.Id != 0)
+                if (modificar)
                 {
                     ArticuloNuevo.modificar(articulo);
                     MessageBox.Show("PRODUCTO MODIFICADO CON EXITO");
@@ -80,9 +75,6 @@ namespace Mercado
                     MessageBox.Show("PRODUCTO AGREGADO CON EXITO");
                     MemoriaArticulo.Instance().ReinicarMemoria();
                 }
-
-                
-
                 Close();
 
 
@@ -122,6 +114,7 @@ namespace Mercado
                     cbCategoria.Text = articulo.Categoria.ToString();
                     cbCategoria.SelectedValue = articulo.Categoria.Id;
                     cbMarca.SelectedValue = articulo.Marca.Id;
+                    BTN_AgregarImagenes.Text = "Modificar";
                 }
                 
             }
@@ -138,8 +131,17 @@ namespace Mercado
 
         private void BTN_AgregarImagenes_Click(object sender, EventArgs e)
         {
-            frmAgregarIMG frmAgregarIMG = new frmAgregarIMG();
-            frmAgregarIMG.ShowDialog();
+            
+            if (modificar == true)
+            {
+                frmAgregarIMG formAgregar= new frmAgregarIMG(articulo,modificar);
+                formAgregar.ShowDialog();
+                
+            } else
+            {
+                frmAgregarIMG frmAgregarIMG = new frmAgregarIMG();
+                frmAgregarIMG.ShowDialog();
+            }
         }
 
         internal void recibirDatos(List<Imagen> listaImagen)

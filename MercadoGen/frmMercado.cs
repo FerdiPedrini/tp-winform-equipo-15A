@@ -40,7 +40,7 @@ namespace Mercado
                 listaArticulos = articuloService.listar();
                 dgvListaProd.DataSource = listaArticulos;
                 ocultarColumnas();
-            cargarImagen(listaArticulos[0].FirstImage());
+                cargarImagen(listaArticulos[0].FirstImage());
         }
 
         private void dgvListaProd_SelectionChanged(object sender, EventArgs e)
@@ -112,11 +112,6 @@ namespace Mercado
 
         }
 
-        private void dgvListaProd_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnModificar_Click(object sender, EventArgs e)
         {
             bool modificar = true;
@@ -125,9 +120,11 @@ namespace Mercado
             seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem;
 
             FrmAgregarProducto frmmodificar = new FrmAgregarProducto(seleccionado,modificar);
+
             frmmodificar.ShowDialog();
             cargaDataGrip();
         }
+
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {

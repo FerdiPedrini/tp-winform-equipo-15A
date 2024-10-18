@@ -26,6 +26,7 @@ namespace Negocio
                     aux.Id = (int)datos.Lector["Id"];
                     aux.IdArticulo = (int)datos.Lector["IdArticulo"];
                     aux.UrlImagen = (string)datos.Lector["ImagenUrl"];
+                    
                     lista.Add(aux);
                 }
                 return lista;
@@ -41,6 +42,38 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public List<string> ImagenesUrlporId(int id) 
+        {
+            List<string> lista = new List<string>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select ImagenUrl from IMAGENES inner join ARTICULOS on ARTICULOS.Id=IMAGENES.IdArticulo where ARTICULOS.Id=@id");
+                datos.setearParametro("@id", id);
+           
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {               
+                    string auxiliar = (string)datos.Lector["ImagenUrl"];
+
+                    lista.Add(auxiliar);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+
+                datos.cerrarConexion();
+            }
+        }
+
 
         public List<Imagen> listarPorIdArticulo(int id)
         {
