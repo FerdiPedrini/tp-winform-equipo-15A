@@ -85,6 +85,7 @@
             this.btnEliminarImg.TabIndex = 4;
             this.btnEliminarImg.Text = "Eliminar imagen";
             this.btnEliminarImg.UseVisualStyleBackColor = true;
+            this.btnEliminarImg.Click += new System.EventHandler(this.btnEliminarImg_Click);
             // 
             // lblListaImg
             // 

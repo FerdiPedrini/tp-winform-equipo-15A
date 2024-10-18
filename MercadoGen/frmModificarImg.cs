@@ -96,5 +96,20 @@ namespace Mercado
             frmSobreescribirUrl frmSobreescribirUrl = new frmSobreescribirUrl(articulo, ImagenSeleccionada);
             frmSobreescribirUrl.ShowDialog();
         }
+
+        private void btnEliminarImg_Click(object sender, EventArgs e)
+        {
+            Imagen ImagenSeleccionada = new Imagen();
+            ImagenService imagenService = new ImagenService();
+            if (dgvModificarImg.CurrentRow != null)
+            {
+                ImagenSeleccionada = (Imagen)dgvModificarImg.CurrentRow.DataBoundItem;
+
+
+            }
+            ImagenSeleccionada = (Imagen)dgvModificarImg.CurrentRow.DataBoundItem;
+            imagenService.eliminarImagen(ImagenSeleccionada,articulo.Id);
+
+        }
     }
 }

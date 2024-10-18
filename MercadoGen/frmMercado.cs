@@ -23,24 +23,24 @@ namespace Mercado
         public Mercado()
         {
             InitializeComponent();
-            
+
         }
 
         private void MercadoGen_Load(object sender, EventArgs e)
         {
 
-            cargaDataGrip();            
-           
+            cargaDataGrip();
+
         }
         public void cargaDataGrip()
-        {   
-            
-            ArticuloService articuloService = new ArticuloService(); 
-                
-                listaArticulos = articuloService.listar();
-                dgvListaProd.DataSource = listaArticulos;
-                ocultarColumnas();
-                cargarImagen(listaArticulos[0].FirstImage());
+        {
+
+            ArticuloService articuloService = new ArticuloService();
+
+            listaArticulos = articuloService.listar();
+            dgvListaProd.DataSource = listaArticulos;
+            ocultarColumnas();
+            cargarImagen(listaArticulos[0].FirstImage());
         }
 
         private void dgvListaProd_SelectionChanged(object sender, EventArgs e)
@@ -52,27 +52,27 @@ namespace Mercado
             }
 
         }
-        private void cargarImagen ( string Urlimagen  )
+        private void cargarImagen(string Urlimagen)
         {
-                try
-                {
+            try
+            {
 
-                    pbxArt.Load(Urlimagen);
+                pbxArt.Load(Urlimagen);
 
-                    return;
-
-                }
-                catch (Exception)
-                {
-                    pbxArt.Load("https://img.freepik.com/free-vector/funny-error-404-background-design_1167-219.jpg?t=st=1725827418~exp=1725831018~hmac=54590de3abb1e78d752a2b192ee5f3553e873955a510b935d7dd33c8d56a8a18&w=740");
-                    return;
+                return;
 
             }
-            
+            catch (Exception)
+            {
+                pbxArt.Load("https://img.freepik.com/free-vector/funny-error-404-background-design_1167-219.jpg?t=st=1725827418~exp=1725831018~hmac=54590de3abb1e78d752a2b192ee5f3553e873955a510b935d7dd33c8d56a8a18&w=740");
+                return;
+
+            }
+
 
         }
-        
-        private void ocultarColumnas() 
+
+        private void ocultarColumnas()
         {
             dgvListaProd.Columns["Id"].Visible = false;
 
@@ -82,7 +82,7 @@ namespace Mercado
             FrmAgregarProducto alta = new FrmAgregarProducto();
             alta.ShowDialog();
             int index = dgvListaProd.TabIndex;
-            if(index == 0)
+            if (index == 0)
             {
                 dgvListaProd.TabIndex++;
             }
@@ -119,8 +119,8 @@ namespace Mercado
             Articulo seleccionado;
             seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem;
 
-         
-            FrmAgregarProducto frmmodificar = new FrmAgregarProducto(seleccionado,modificar);
+
+            FrmAgregarProducto frmmodificar = new FrmAgregarProducto(seleccionado, modificar);
 
             frmmodificar.ShowDialog();
             cargaDataGrip();
@@ -130,18 +130,18 @@ namespace Mercado
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             List<Articulo> listaFiltrada;
-            string filtro =txtFiltro.Text;
+            string filtro = txtFiltro.Text;
 
-            if(filtro !=" ")
+            if (filtro != " ")
             {
                 listaFiltrada = listaArticulos.FindAll(y => y.CodigoArticulo.ToUpper().Contains(filtro.ToUpper()) || y.Categoria.Descripcion.ToUpper().Contains(filtro.ToUpper()) || y.Marca.Descripcion.ToUpper().Contains(filtro.ToUpper()));
             }
             else
             {
-                listaFiltrada=listaArticulos;
+                listaFiltrada = listaArticulos;
             }
 
-           
+
             dgvListaProd.DataSource = null;
             dgvListaProd.DataSource = listaFiltrada;
             ocultarColumnas();
@@ -149,30 +149,43 @@ namespace Mercado
 
         private void pbxArt_Click(object sender, EventArgs e)
         {
-            
-           Articulo seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem;
-            
 
-           if (seleccionado.Imagenes.Count < index)
-            {
-                index = 0;
+            Articulo seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem;
+            bool hayFoto = false;
+            int cantidad = seleccionado.Imagenes.Count;
+            Imagen UrlError = new Imagen();
+            UrlError.UrlImagen = "https://st2.depositphotos.com/1560768/6162/i/450/depositphotos_61621057-stock-photo-no-image-available.jpg";
+            if (cantidad > 0) 
+                {
+                    hayFoto = true;
+                }
+
+                if (seleccionado.Imagenes.Count < index)
+                {
+                    index = 0;
+                }
+                if (hayFoto && index<seleccionado.Imagenes.Count)
+                {
+                    string segunda_imagen = seleccionado.Imagenes[index].UrlImagen;
+                    cargarImagen(segunda_imagen);
+                }
+                else
+                {
+                    cargarImagen(UrlError.UrlImagen);
+                }
+                if (seleccionado.Imagenes.Count > index)
+                {
+                    index++;
+
+                } else
+                {
+                    index = 0;
+                }
+
+            hayFoto = false;
+
             }
-           string segunda_imagen = seleccionado.Imagenes[index].UrlImagen;
-            cargarImagen(segunda_imagen);
-
-            if (seleccionado.Imagenes.Count!=index+1)
-            {
-                index++;
-
-            } else
-            {
-                index = 0;
-            }
-            
 
 
         }
-
-        
     }
-}

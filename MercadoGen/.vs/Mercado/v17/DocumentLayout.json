@@ -1,21 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\HP\\Escritorio\\tp-winform-equipo-15A\\MercadoGen\\",
+  "WorkspaceRootPath": "C:\\Users\\Nico\\Desktop\\Viernes winforms agus sin ferdi 18102024\\tp-winform-equipo-15A\\MercadoGen\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7DCEAD98-B01E-401E-81E9-20F08FFC9086}|Mercado.csproj|d:\\hp\\escritorio\\tp-winform-equipo-15a\\mercadogen\\frmmodificarimg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7DCEAD98-B01E-401E-81E9-20F08FFC9086}|Mercado.csproj|C:\\Users\\Nico\\Desktop\\Viernes winforms agus sin ferdi 18102024\\tp-winform-equipo-15A\\MercadoGen\\frmmodificarimg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7DCEAD98-B01E-401E-81E9-20F08FFC9086}|Mercado.csproj|solutionrelative:frmmodificarimg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7DCEAD98-B01E-401E-81E9-20F08FFC9086}|Mercado.csproj|d:\\hp\\escritorio\\tp-winform-equipo-15a\\mercadogen\\frmsobreescribirurl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7DCEAD98-B01E-401E-81E9-20F08FFC9086}|Mercado.csproj|solutionrelative:frmsobreescribirurl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7DCEAD98-B01E-401E-81E9-20F08FFC9086}|Mercado.csproj|c:\\users\\nico\\desktop\\viernes winforms agus sin ferdi 18102024\\tp-winform-equipo-15a\\mercadogen\\frmmodificarimg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7DCEAD98-B01E-401E-81E9-20F08FFC9086}|Mercado.csproj|solutionrelative:frmmodificarimg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7DCEAD98-B01E-401E-81E9-20F08FFC9086}|Mercado.csproj|d:\\hp\\escritorio\\tp-winform-equipo-15a\\mercadogen\\frmmodnuevaimg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{7DCEAD98-B01E-401E-81E9-20F08FFC9086}|Mercado.csproj|solutionrelative:frmmodnuevaimg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{7DCEAD98-B01E-401E-81E9-20F08FFC9086}|Mercado.csproj|c:\\users\\nico\\desktop\\viernes winforms agus sin ferdi 18102024\\tp-winform-equipo-15a\\mercadogen\\frmmodeliminarimg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7DCEAD98-B01E-401E-81E9-20F08FFC9086}|Mercado.csproj|solutionrelative:frmmodeliminarimg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4D1A659B-A6EC-43BB-90BB-C4D007D71D87}|..\\Negocio\\Negocio.csproj|d:\\hp\\escritorio\\tp-winform-equipo-15a\\negocio\\imagenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7DCEAD98-B01E-401E-81E9-20F08FFC9086}|Mercado.csproj|c:\\users\\nico\\desktop\\viernes winforms agus sin ferdi 18102024\\tp-winform-equipo-15a\\mercadogen\\frmmodeliminarimg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DCEAD98-B01E-401E-81E9-20F08FFC9086}|Mercado.csproj|solutionrelative:frmmodeliminarimg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,63 +26,54 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 4,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmModNuevaImg.cs [Dise\u00F1o]",
-              "DocumentMoniker": "D:\\HP\\Escritorio\\tp-winform-equipo-15A\\MercadoGen\\frmModNuevaImg.cs",
-              "RelativeDocumentMoniker": "frmModNuevaImg.cs",
-              "ToolTip": "D:\\HP\\Escritorio\\tp-winform-equipo-15A\\MercadoGen\\frmModNuevaImg.cs [Dise\u00F1o]",
-              "RelativeToolTip": "frmModNuevaImg.cs [Dise\u00F1o]",
+              "DocumentIndex": 1,
+              "Title": "frmModificarImg.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Nico\\Desktop\\Viernes winforms agus sin ferdi 18102024\\tp-winform-equipo-15A\\MercadoGen\\frmModificarImg.cs",
+              "RelativeDocumentMoniker": "frmModificarImg.cs",
+              "ToolTip": "C:\\Users\\Nico\\Desktop\\Viernes winforms agus sin ferdi 18102024\\tp-winform-equipo-15A\\MercadoGen\\frmModificarImg.cs [Design]",
+              "RelativeToolTip": "frmModificarImg.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-18T15:44:40.999Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2024-10-18T16:50:46.595Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ImagenService.cs",
-              "DocumentMoniker": "D:\\HP\\Escritorio\\tp-winform-equipo-15A\\Negocio\\ImagenService.cs",
-              "RelativeDocumentMoniker": "..\\Negocio\\ImagenService.cs",
-              "ToolTip": "D:\\HP\\Escritorio\\tp-winform-equipo-15A\\Negocio\\ImagenService.cs",
-              "RelativeToolTip": "..\\Negocio\\ImagenService.cs",
-              "ViewState": "AgIAAGwAAAAAAAAAAADwv4kAAAC8AAAAAAAAAA==",
+              "Title": "frmModEliminarIMG.cs",
+              "DocumentMoniker": "C:\\Users\\Nico\\Desktop\\Viernes winforms agus sin ferdi 18102024\\tp-winform-equipo-15A\\MercadoGen\\frmModEliminarIMG.cs",
+              "RelativeDocumentMoniker": "frmModEliminarIMG.cs",
+              "ToolTip": "C:\\Users\\Nico\\Desktop\\Viernes winforms agus sin ferdi 18102024\\tp-winform-equipo-15A\\MercadoGen\\frmModEliminarIMG.cs",
+              "RelativeToolTip": "frmModEliminarIMG.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAIAwwBMAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-18T13:18:40.998Z",
+              "WhenOpened": "2024-10-18T16:47:10.597Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmSobreescribirUrl.cs",
-              "DocumentMoniker": "D:\\HP\\Escritorio\\tp-winform-equipo-15A\\MercadoGen\\frmSobreescribirUrl.cs",
-              "RelativeDocumentMoniker": "frmSobreescribirUrl.cs",
-              "ToolTip": "D:\\HP\\Escritorio\\tp-winform-equipo-15A\\MercadoGen\\frmSobreescribirUrl.cs",
-              "RelativeToolTip": "frmSobreescribirUrl.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAiwAoAAAAbAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "frmModEliminarIMG.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Nico\\Desktop\\Viernes winforms agus sin ferdi 18102024\\tp-winform-equipo-15A\\MercadoGen\\frmModEliminarIMG.cs",
+              "RelativeDocumentMoniker": "frmModEliminarIMG.cs",
+              "ToolTip": "C:\\Users\\Nico\\Desktop\\Viernes winforms agus sin ferdi 18102024\\tp-winform-equipo-15A\\MercadoGen\\frmModEliminarIMG.cs [Design]",
+              "RelativeToolTip": "frmModEliminarIMG.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-18T15:15:24.275Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-18T16:44:58.748Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "frmModificarImg.cs",
-              "DocumentMoniker": "D:\\HP\\Escritorio\\tp-winform-equipo-15A\\MercadoGen\\frmModificarImg.cs",
+              "DocumentMoniker": "C:\\Users\\Nico\\Desktop\\Viernes winforms agus sin ferdi 18102024\\tp-winform-equipo-15A\\MercadoGen\\frmModificarImg.cs",
               "RelativeDocumentMoniker": "frmModificarImg.cs",
-              "ToolTip": "D:\\HP\\Escritorio\\tp-winform-equipo-15A\\MercadoGen\\frmModificarImg.cs",
+              "ToolTip": "C:\\Users\\Nico\\Desktop\\Viernes winforms agus sin ferdi 18102024\\tp-winform-equipo-15A\\MercadoGen\\frmModificarImg.cs",
               "RelativeToolTip": "frmModificarImg.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAAAGMAAAABAAAAAAAAAA==",
+              "ViewState": "AQIAAFwAAAAAAAAAAIAwwG4AAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-18T13:07:21.574Z",
               "EditorCaption": ""

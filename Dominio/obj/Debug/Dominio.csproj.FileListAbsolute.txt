@@ -22,3 +22,9 @@ D:\HP\Escritorio\tp-winform-equipo-15A\Dominio\obj\Debug\Dominio.csproj.Assembly
 D:\HP\Escritorio\tp-winform-equipo-15A\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 D:\HP\Escritorio\tp-winform-equipo-15A\Dominio\obj\Debug\Dominio.dll
 D:\HP\Escritorio\tp-winform-equipo-15A\Dominio\obj\Debug\Dominio.pdb
+C:\Users\Nico\Desktop\Viernes winforms agus sin ferdi 18102024\tp-winform-equipo-15A\Dominio\bin\Debug\Dominio.dll
+C:\Users\Nico\Desktop\Viernes winforms agus sin ferdi 18102024\tp-winform-equipo-15A\Dominio\bin\Debug\Dominio.pdb
+C:\Users\Nico\Desktop\Viernes winforms agus sin ferdi 18102024\tp-winform-equipo-15A\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\Nico\Desktop\Viernes winforms agus sin ferdi 18102024\tp-winform-equipo-15A\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\Nico\Desktop\Viernes winforms agus sin ferdi 18102024\tp-winform-equipo-15A\Dominio\obj\Debug\Dominio.dll
+C:\Users\Nico\Desktop\Viernes winforms agus sin ferdi 18102024\tp-winform-equipo-15A\Dominio\obj\Debug\Dominio.pdb

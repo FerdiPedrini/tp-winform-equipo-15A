@@ -39,6 +39,8 @@ namespace Mercado
             imagenService.eliminarImagen(imagenSeleccionada,articulo.Id);
             imagenService.agregarImagen(imagen,articulo.Id);
         }
+
+
     }
 }
 

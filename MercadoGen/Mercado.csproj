@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmModEliminarIMG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModEliminarIMG.Designer.cs">
+      <DependentUpon>frmModEliminarIMG.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSobreescribirUrl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmModEliminarIMG.resx">
+      <DependentUpon>frmModEliminarIMG.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSobreescribirUrl.resx">
       <DependentUpon>frmSobreescribirUrl.cs</DependentUpon>
     </EmbeddedResource>
