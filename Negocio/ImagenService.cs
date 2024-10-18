@@ -140,6 +140,7 @@ namespace Negocio
                 _accesodatos.setearParametro("@UrlImagen", imagen.UrlImagen);
                 _accesodatos.ejecutarAccion();
 
+ 
             }
             catch (Exception ex)
             {

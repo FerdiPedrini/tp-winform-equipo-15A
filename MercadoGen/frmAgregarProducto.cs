@@ -42,68 +42,72 @@ namespace Mercado
             this.Close();
         }
 
+     
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Articulo vistaarticulo = articulo;
-            ArticuloService ArticuloNuevo = new ArticuloService();
+            ArticuloService articuloService = new ArticuloService();
             ImagenService imagenService = new ImagenService();
+            Articulo articulo = new Articulo();
+            Imagen imagen = new Imagen();
+
             decimal precio;
-            bool esMoney = decimal.TryParse(textPrecio.Text, out precio) && precio >= 0;
+            bool esPrecioValido = decimal.TryParse(textPrecio.Text, out precio) && precio >= 0;
 
             try
             {
-                
-            
-                    if (articulo == null && imagen == null)
-                    {
-                        articulo = new Articulo();
-                        imagen = new Imagen();
-                    }
-
-               
-                    if (esMoney)
-                    {
-                        articulo.CodigoArticulo = textCodigo.Text;
-                        articulo.Nombre = textNombre.Text;
-                        articulo.Descripcion = txtDescripcion.Text;
-                        articulo.Precio = Convert.ToDecimal(textPrecio.Text);
-                        articulo.Marca = (Marca)cbMarca.SelectedItem;
-                        articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
-                        articulo.Imagenes = MemoriaArticulo.Instance().Articulo.Imagenes;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ingrese un precio valido");
-                    }
-                
-
-                if (modificar && esMoney)
+             
+                if (!ValidarCamposObligatorios())
                 {
-                    ArticuloNuevo.modificar(articulo);
-                    MessageBox.Show("PRODUCTO MODIFICADO CON EXITO");
+                    MessageBox.Show("Todos los campos son obligatorios y no pueden contener solo espacios.");
+                    return;
                 }
 
-                else if (esMoney)
-                {                    
-                    int idArt = ArticuloNuevo.agregarProducto(articulo);
+                if (!esPrecioValido)
+                {
+                    MessageBox.Show("Ingrese un precio válido.");
+                    return;
+                }
 
-                    MessageBox.Show("PRODUCTO AGREGADO CON EXITO");
+            
+                articulo.CodigoArticulo = textCodigo.Text.Trim();
+                articulo.Nombre = textNombre.Text.Trim();
+                articulo.Descripcion = txtDescripcion.Text.Trim();
+                articulo.Precio = precio;
+                articulo.Marca = (Marca)cbMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
+                articulo.Imagenes = MemoriaArticulo.Instance().Articulo.Imagenes;
+
+              
+                if (modificar)
+                {
+                    articuloService.modificar(articulo);
+                    MessageBox.Show("PRODUCTO MODIFICADO CON ÉXITO");
+                }
+                else
+                {
+                    int idArt = articuloService.agregarProducto(articulo);
+                    MessageBox.Show("PRODUCTO AGREGADO CON ÉXITO");
                     MemoriaArticulo.Instance().ReinicarMemoria();
                 }
-                if (esMoney)
-                {
-                 Close();
-                }
 
+                Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show($"Ocurrió un error: {ex.Message}");
             }
-            
- 
         }
 
+       
+        private bool ValidarCamposObligatorios()
+        {
+            return !string.IsNullOrWhiteSpace(textCodigo.Text) &&
+                   !string.IsNullOrWhiteSpace(textNombre.Text) &&
+                   !string.IsNullOrWhiteSpace(txtDescripcion.Text) &&
+                   cbMarca.SelectedItem != null &&
+                   cbCategoria.SelectedItem != null;
+        }
 
         private void FrmAgregarProducto_Load(object sender, EventArgs e)
         {
@@ -148,7 +152,8 @@ namespace Mercado
 
         private void BTN_AgregarImagenes_Click(object sender, EventArgs e)
         {
-            
+     
+
             if (modificar == true)
             {
                

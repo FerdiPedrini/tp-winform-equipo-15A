@@ -50,7 +50,7 @@ namespace Mercado
             else
             {
                 listaImagen = imagenService.listar();
-                dgvAgregarImg.DataSource = listaImagen;
+                dgvAgregarImg.DataSource = MemoriaArticulo.Instance().Articulo.Imagenes;
             }
 
             //Articulo ArticuloPrueba = new Articulo();
@@ -76,6 +76,9 @@ namespace Mercado
             articulo.Imagenes = listaImagen2;
             MemoriaArticulo.Instance().Articulo=articulo;
 
+            MessageBox.Show("Imagen agregada con exito");
+            txtBoxUrLImg.Text = "";
+            cargaDataGridView();
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -102,6 +102,7 @@ namespace Mercado
             {
                 seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem;
                 service.eliminar(seleccionado.Id);
+                service.EliminarImagenPorId(seleccionado.Id);
                 cargaDataGrip();
             }
             catch (Exception ex)

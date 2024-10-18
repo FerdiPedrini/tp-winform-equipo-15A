@@ -110,3 +110,24 @@ C:\Users\Nico\Desktop\PruebaDEspues deerror\tp-winform-equipo-15A\MercadoGen\obj
 C:\Users\Nico\Desktop\PruebaDEspues deerror\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.pdb
 C:\Users\Nico\Desktop\PruebaDEspues deerror\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.frmModificarMcaCria.resources
 D:\HP\Escritorio\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.frmModificarMcaCria.resources
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\bin\Debug\Mercado.exe.config
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\bin\Debug\Mercado.exe
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\bin\Debug\Mercado.pdb
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\bin\Debug\Dominio.dll
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\bin\Debug\Negocio.dll
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\bin\Debug\Dominio.pdb
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\bin\Debug\Negocio.pdb
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.csproj.AssemblyReference.cache
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.frmModificarMcaCria.resources
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.frmSobreescribirUrl.resources
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.frmModificarImg.resources
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.frmAgregarIMG.resources
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.FrmAgregarProducto.resources
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.Mercado.resources
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.frmModNuevaImg.resources
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.Properties.Resources.resources
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.csproj.GenerateResource.cache
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.csproj.CoreCompileInputs.cache
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.csproj.Up2Date
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.exe
+C:\Users\windows\Desktop\TpWinformsOctubre\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.pdb
