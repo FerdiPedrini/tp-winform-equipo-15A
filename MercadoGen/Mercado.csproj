@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmSobreescribirUrl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSobreescribirUrl.Designer.cs">
+      <DependentUpon>frmSobreescribirUrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmModificarImg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,8 +76,17 @@
     <Compile Include="frmMercado.Designer.cs">
       <DependentUpon>frmMercado.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmModNuevaImg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModNuevaImg.Designer.cs">
+      <DependentUpon>frmModNuevaImg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmSobreescribirUrl.resx">
+      <DependentUpon>frmSobreescribirUrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmModificarImg.resx">
       <DependentUpon>frmModificarImg.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMercado.resx">
       <DependentUpon>frmMercado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModNuevaImg.resx">
+      <DependentUpon>frmModNuevaImg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -119,6 +119,7 @@ namespace Mercado
             Articulo seleccionado;
             seleccionado = (Articulo)dgvListaProd.CurrentRow.DataBoundItem;
 
+         
             FrmAgregarProducto frmmodificar = new FrmAgregarProducto(seleccionado,modificar);
 
             frmmodificar.ShowDialog();

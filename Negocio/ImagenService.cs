@@ -129,5 +129,27 @@ namespace Negocio
                 _accesodatos.cerrarConexion();
             }
         }
+
+        public void eliminarImagen(Imagen imagen, int idArticulo)
+        {
+            AccesoDatos _accesodatos = new AccesoDatos();
+            try
+            {
+                _accesodatos.setearConsulta("delete IMAGENES from IMAGENES INNER join ARTICULOS on ARTICULOS.Id=IMAGENES.IdArticulo where ARTICULOS.Id= @idArticulo and ImagenUrl=@UrlImagen");
+                _accesodatos.setearParametro("@IdArticulo", idArticulo);
+                _accesodatos.setearParametro("@UrlImagen", imagen.UrlImagen);
+                _accesodatos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _accesodatos.cerrarConexion();
+            }
+        }
+
     }
 }

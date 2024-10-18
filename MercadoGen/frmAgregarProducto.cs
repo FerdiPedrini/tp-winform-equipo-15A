@@ -46,37 +46,54 @@ namespace Mercado
         {
             Articulo vistaarticulo = articulo;
             ArticuloService ArticuloNuevo = new ArticuloService();
-            ImagenService imagenService = new ImagenService();   
+            ImagenService imagenService = new ImagenService();
+            decimal precio;
+            bool esMoney = decimal.TryParse(textPrecio.Text, out precio) && precio >= 0;
+
             try
             {
-                if (articulo == null && imagen == null)
-               {
-                    articulo = new Articulo();
-                    imagen = new Imagen();
-                }
-            articulo.CodigoArticulo=textCodigo.Text;
-            articulo.Nombre = textNombre.Text;
-            articulo.Descripcion = txtDescripcion.Text;
-            articulo.Precio = Convert.ToDecimal(textPrecio.Text);
-            articulo.Marca = (Marca)cbMarca.SelectedItem;        
-            articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
-            articulo.Imagenes = MemoriaArticulo.Instance().Articulo.Imagenes;
+                
             
-                if (modificar)
+                    if (articulo == null && imagen == null)
+                    {
+                        articulo = new Articulo();
+                        imagen = new Imagen();
+                    }
+
+               
+                    if (esMoney)
+                    {
+                        articulo.CodigoArticulo = textCodigo.Text;
+                        articulo.Nombre = textNombre.Text;
+                        articulo.Descripcion = txtDescripcion.Text;
+                        articulo.Precio = Convert.ToDecimal(textPrecio.Text);
+                        articulo.Marca = (Marca)cbMarca.SelectedItem;
+                        articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
+                        articulo.Imagenes = MemoriaArticulo.Instance().Articulo.Imagenes;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ingrese un precio valido");
+                    }
+                
+
+                if (modificar && esMoney)
                 {
                     ArticuloNuevo.modificar(articulo);
                     MessageBox.Show("PRODUCTO MODIFICADO CON EXITO");
                 }
 
-                else
+                else if (esMoney)
                 {                    
                     int idArt = ArticuloNuevo.agregarProducto(articulo);
 
                     MessageBox.Show("PRODUCTO AGREGADO CON EXITO");
                     MemoriaArticulo.Instance().ReinicarMemoria();
                 }
-                Close();
-
+                if (esMoney)
+                {
+                 Close();
+                }
 
             }
             catch (Exception ex)
@@ -134,8 +151,9 @@ namespace Mercado
             
             if (modificar == true)
             {
-                frmAgregarIMG formAgregar= new frmAgregarIMG(articulo,modificar);
-                formAgregar.ShowDialog();
+               
+                frmModificarImg formModificar= new frmModificarImg(articulo,modificar);
+                formModificar.ShowDialog();
                 
             } else
             {

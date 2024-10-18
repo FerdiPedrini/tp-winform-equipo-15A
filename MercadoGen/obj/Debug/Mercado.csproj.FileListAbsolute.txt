@@ -64,3 +64,6 @@ D:\HP\Escritorio\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.csproj.CoreC
 D:\HP\Escritorio\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.csproj.Up2Date
 D:\HP\Escritorio\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.exe
 D:\HP\Escritorio\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.pdb
+D:\HP\Escritorio\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.frmModificarImg.resources
+D:\HP\Escritorio\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.frmModNuevaImg.resources
+D:\HP\Escritorio\tp-winform-equipo-15A\MercadoGen\obj\Debug\Mercado.frmSobreescribirUrl.resources
