@@ -30,6 +30,10 @@ namespace Mercado
         {
 
             cargaDataGrip();
+            cbCampo.Items.Add("Codigo");
+            cbCampo.Items.Add("Nombre");
+            cbCampo.Items.Add("Descripcion");
+
 
         }
         public void cargaDataGrip()
@@ -191,6 +195,64 @@ namespace Mercado
         {
             frmModificarMcaCria formModificarMcaCria = new frmModificarMcaCria();
             formModificarMcaCria.ShowDialog();
+        }
+
+        private void cbCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cbCampo.SelectedItem.ToString();
+            if (opcion == "Codigo")
+            {
+                cbCriterio.Items.Clear();
+                cbCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cbCriterio.Items.Clear();
+                cbCriterio.Items.Add("Comienza con");
+                cbCriterio.Items.Add("Termina con");
+                cbCriterio.Items.Add("Contiene");
+            }
+        }
+
+        private void btnBuscarFiltro_Click_1(object sender, EventArgs e)
+        {
+            ArticuloService service = new ArticuloService();
+            try
+            {
+
+                if (cbCampo.SelectedItem == null)
+                {
+                    MessageBox.Show("Debe seleccionar un campo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (cbCriterio.SelectedItem == null)
+                {
+                    MessageBox.Show("Debe seleccionar un criterio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtFiltroAvanzado.Text))
+                {
+                    MessageBox.Show("El campo filtro no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string campo = cbCampo.SelectedItem.ToString();
+                string criterio = cbCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAvanzado.Text;
+
+                dgvListaProd.DataSource = service.filtrar(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            cargaDataGrip();
         }
     }
     }

@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using Dominio;
 using System.Xml.Linq;
 using System.ComponentModel;
+using System.Diagnostics.Eventing.Reader;
 
 
 
@@ -185,6 +186,96 @@ namespace Negocio
             {
                 _accesoDatos.cerrarConexion();
                
+            }
+        }
+
+        public List<Articulo> filtrar(string campo, string criterio, string filtro)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = @"
+                SELECT A.Id, Codigo, Nombre, A.Descripcion, A.IdMarca, A.IdCategoria, 
+                M.Descripcion AS Nombre_Marca, C.Descripcion AS Nombre_Categoria, 
+                A.Precio 
+                FROM ARTICULOS A 
+                JOIN CATEGORIAS C ON A.IdCategoria = C.Id 
+                JOIN MARCAS M ON A.IdMarca = M.Id 
+                WHERE 1 = 1 ";  
+
+                if (campo == "Codigo")
+                {   
+                           consulta += "AND Codigo = @filtro ";                
+                }
+                
+                else if (campo == "Nombre")
+                {
+                    switch (criterio)
+                    {
+                        case "Comienza con":
+                            consulta += "AND Nombre LIKE @filtro + '%' ";
+                            break;
+                        case "Termina con":
+                            consulta += "AND Nombre LIKE '%' + @filtro ";
+                            break;
+                        default:
+                            consulta += "AND Nombre LIKE '%' + @filtro + '%' ";
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (criterio)
+                    {
+                        case "Comienza con":
+                            consulta += "AND A.Descripcion LIKE @filtro + '%' ";
+                            break;
+                        case "Termina con":
+                            consulta += "AND A.Descripcion LIKE '%' + @filtro ";
+                            break;
+                        default:
+                            consulta += "AND A.Descripcion LIKE '%' + @filtro + '%' ";
+                            break;
+                    }
+                }
+
+                consulta += "ORDER BY A.Id ASC";
+                          
+                datos.setearConsulta(consulta);
+                datos.agregarParametro("@filtro", filtro);  
+                datos.ejecutarLectura();
+                           
+                while (datos.Lector.Read())
+                {
+                    Articulo articulo = new Articulo
+                    {
+                        Id = (int)datos.Lector["Id"],
+                        CodigoArticulo = (string)datos.Lector["Codigo"],
+                        Nombre = (string)datos.Lector["Nombre"],
+                        Descripcion = (string)datos.Lector["Descripcion"],
+                        Precio = (decimal)datos.Lector["Precio"],
+                                               
+                        Marca = new Marca
+                        {
+                            Id = (int)datos.Lector["IdMarca"],
+                            Descripcion = (string)datos.Lector["Nombre_Marca"]
+                        },
+                        Categoria = new Categoria
+                        {
+                            Id = (int)datos.Lector["IdCategoria"],
+                            Descripcion = (string)datos.Lector["Nombre_Categoria"]
+                        }
+                    };
+
+                    lista.Add(articulo);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;  
             }
         }
     }
